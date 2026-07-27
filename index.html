@@ -2,7 +2,11 @@
 <html lang="sr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#07090e">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="format-detection" content="telephone=no">
 <title>IP Inženjering 032 — Elektroinženjering i automatizacija | Čačak</title>
 <meta name="description" content="IP Inženjering 032 — projektovanje i izrada elektroormara, automatizacija industrijskih pogona, PLC sistemi i ugradnja motora za kapije. Čačak, cela Srbija.">
 <meta name="keywords" content="elektroinženjering, elektroormari, automatizacija, PLC sistemi, kapije, motori, Čačak, Srbija">
@@ -211,33 +215,44 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
   transition: opacity .6s var(--ease), visibility .6s var(--ease);
 }
 #preloader.loaded { opacity: 0; visibility: hidden; }
-.pre-gate {
-  position: relative;
-  width: 260px;
-  height: 190px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.pre-loader-panel {
+  width: min(360px, 90vw);
+  padding: 28px 24px;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 32px;
   box-shadow: 0 30px 90px rgba(0,0,0,0.8), 0 0 40px rgba(47,143,224,0.15);
+  text-align: center;
+}
+.pre-loader-title {
+  font-family: var(--f-display);
+  font-size: clamp(24px, 4vw, 34px);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--text);
+  margin-bottom: 24px;
+}
+.pre-loader-bar {
+  width: 100%;
+  height: 12px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.08);
   overflow: hidden;
+  margin-bottom: 16px;
 }
-.gate-frame { position: absolute; inset: 0; border: 1px solid rgba(255,255,255,0.05); border-radius: 32px; pointer-events: none; }
-.gate-leaf {
-  position: absolute;
-  top: 0;
-  width: 50%;
+.pre-loader-progress {
+  width: 0%;
   height: 100%;
-  background: linear-gradient(180deg, #172033 0%, #0b0f19 100%);
-  border-right: 1px solid var(--accent);
-  transition: transform .85s cubic-bezier(.77,0,.175,1);
+  background: linear-gradient(135deg, #2f8fe0, #ff7a29);
+  transition: width .2s ease;
 }
-.gate-left { left: 0; transform-origin: left center; }
-.gate-right { right: 0; border-right: none; border-left: 1px solid var(--accent-alt); transform-origin: right center; }
-#preloader.gate-open .gate-left { transform: translateX(-102%); }
-#preloader.gate-open .gate-right { transform: translateX(102%); }
+.pre-loader-text {
+  font-family: var(--f-label);
+  font-size: 14px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+}
 
 /* Header */
 .site-header {
@@ -345,6 +360,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
 }
 
 .header-cta { display: flex; align-items: center; gap: 16px; }
+.gate-actions { display:flex; align-items:center; gap:14px; margin-top:18px; }
 .burger {
   display: none;
   width: 44px;
@@ -356,6 +372,8 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
   color: var(--text);
   background: var(--surface);
   transition: border-color .25s var(--ease);
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 .burger:hover { border-color: var(--accent); }
 .burger svg { width: 20px; height: 20px; }
@@ -686,11 +704,11 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
 .modal-copy p { color: var(--text-muted); font-size: 17px; line-height: 1.8; margin: 0; }
 
 /* Process */
-.process { background: var(--bg); }
+.modal-image { max-width: 100%; max-height: 80vh; }
+.modal-image img { width: 100%; height: auto; object-fit: contain; display: block; }
 .process-track { position: relative; margin-top: 40px; }
-.process-line-bg, .process-line-fg { position: absolute; left: 0; top: 12px; height: 3px; width: 100%; border-radius: 999px; }
-.process-line-bg { background: rgba(255,255,255,0.08); }
-.process-line-fg { background: var(--gradient); box-shadow: 0 0 16px var(--accent-glow); width: 0%; }
+.process-line-bg { position: absolute; left: 0; top: 12px; height: 3px; width: 100%; border-radius: 999px; background: rgba(255,255,255,0.08); }
+.process-line-fg { position: absolute; left: 0; top: 12px; height: 3px; width: 0%; border-radius: 999px; background: var(--gradient); box-shadow: 0 0 16px var(--accent-glow); transform-origin: left center; }
 .process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; position: relative; }
 .process-step { position: relative; padding-top: 56px; }
 .process-dot {
@@ -781,7 +799,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
 
 /* Why Us */
 .why { background: var(--bg-soft); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-.why-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.why-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; width: 100%; }
 .why-item {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -791,8 +809,10 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
   align-items: flex-start;
   gap: 20px;
   transition: all .3s var(--ease);
+  min-width: 0;
 }
 .why-item:hover { transform: translateY(-4px); border-color: var(--accent); background: var(--surface-soft); }
+.why-item-wide { grid-column: 1 / -1; }
 .why-check { width: 32px; height: 32px; flex-shrink: 0; color: #10b981; margin-top: 2px; filter: drop-shadow(0 0 8px rgba(16, 185, 129, 0.4)); }
 .why-item h4 { font-size: 20px; font-family: var(--f-display); text-transform: uppercase; font-weight: 700; margin: 0; line-height: 1.3; }
 
@@ -1005,14 +1025,17 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
   .service-grid, .projects-grid { grid-template-columns: repeat(2, 1fr); }
   .contact-grid, .plc-grid, .coverage-grid, .gates-grid, .about-grid { grid-template-columns: 1fr; }
 }
+/* Ensure gate actions span full width under visual when grid has multiple columns */
+.gates-grid > .gate-actions { grid-column: 1 / -1; display: flex; gap: 14px; align-items: center; }
 @media(max-width: 760px) {
   .service-grid, .projects-grid, .why-list, .footer-grid, .testi-grid { grid-template-columns: 1fr; }
-  .main-nav {
+  .why-item-wide { grid-column: auto; }
+    .main-nav {
     position: fixed; top: 0; right: 0; height: 100vh; width: min(320px, 80vw);
-    background: rgba(11, 15, 25, 0.98); backdrop-filter: blur(20px);
+    background: rgba(11, 15, 25, 0.98); -webkit-backdrop-filter: none; backdrop-filter: none;
     border-left: 1px solid var(--border); flex-direction: column; align-items: flex-start;
     justify-content: center; gap: 24px; padding: 40px var(--pad); transform: translateX(100%);
-    transition: transform .4s var(--ease); z-index: 520;
+    transition: transform .4s var(--ease); z-index: 520; isolation: isolate;
   }
   .main-nav.open { transform: translateX(0); }
   .header-cta .btn-outline { display: none; }
@@ -1021,20 +1044,75 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
   .hero-scroll { display: none; }
   .stat-grid { grid-template-columns: 1fr; }
   .process-steps { grid-template-columns: 1fr; }
-  .process-line-bg, .process-line-fg { left: 12px; top: 0; width: 2px; height: 100%; }
   .process-step { padding-top: 0; padding-left: 48px; }
+  .process-line-bg { left: 12px; top: 0; width: 2px; height: 100%; border-radius: 999px; }
+  .process-line-fg { left: 12px; top: 0; width: 2px; height: 0%; border-radius: 999px; transform-origin: top center; }
   .process-dot { left: 0; top: 2px; }
   .form-row { grid-template-columns: 1fr; }
+}
+body.nav-open { overflow: hidden; }
+html.nav-open, body.nav-open { overflow: hidden; height: 100%; }
+/* Lock page scroll when nav is open and allow the nav to scroll internally */
+.main-nav { -webkit-overflow-scrolling: touch; overflow-y: auto; overscroll-behavior: contain; }
+.main-nav::-webkit-scrollbar{ width: 8px; }
+.main-nav::-webkit-scrollbar-thumb{ background: rgba(255,255,255,0.06); border-radius: 8px; }
+@media (max-width: 640px) {
+  html { font-size: 15px; }
+  body { -webkit-text-size-adjust: 100%; text-rendering: optimizeLegibility; }
+  .container { width: min(100%, calc(100% - 24px)); padding: 0 12px; }
+  .site-header { padding: 16px 0; }
+  .site-header.scrolled { padding: 10px 0; }
+  .header-inner { gap: 12px; }
+  .logo { gap: 8px; }
+  .logo-mark svg { height: 46px; max-width: 320px; }
+  .logo-text { font-size: 16px; letter-spacing: .04em; }
+  .hero { min-height: auto; padding-top: 110px; padding-bottom: 56px; }
+  .hero-title { font-size: clamp(34px, 9.2vw, 52px); line-height: .96; margin-bottom: 16px; }
+  .hero-copy { font-size: 1rem; max-width: 100%; margin-bottom: 22px; }
+  .hero-actions { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .hero-actions .btn { width: 100%; justify-content: center; }
+  .section { padding: clamp(70px, 12vw, 96px) 0; }
+  .section-head { margin-bottom: 32px; }
+  .section-head h2 { font-size: clamp(28px, 7vw, 36px); }
+  .section-head p { font-size: 1rem; }
+  .section-title { font-size: clamp(28px, 7vw, 38px); margin-bottom: 16px; }
+  .about-grid, .contact-grid { gap: 24px; }
+  .about-text p, .contact-card p, .service-card p, .project-card p { font-size: .95rem; }
+  .stat-grid { gap: 12px; }
+  .stat { padding: 18px; }
+  .stat-num { font-size: 1.8rem; }
+  .service-card, .project-card, .contact-card, .faq-item, .process-step { padding: 20px; }
+  .form-row, .contact-form { gap: 12px; }
+  .form-control, .form-textarea { padding: 14px 16px; font-size: 1rem; }
+  .footer-grid { gap: 28px; padding-bottom: 28px; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; }
+  .footer-social { gap: 10px; }
+  .main-nav a, .main-nav .nav-link { font-size: 15px; }
+}
+@media (max-width: 480px) {
+  .container { padding: 0 14px; }
+  .logo-text { display: none; }
+  .logo-mark svg { height: 42px; }
+  .hero-title { font-size: clamp(30px, 10vw, 42px); }
+  .hero-actions .btn { padding: 14px 20px; font-size: 13px; }
+  .section-head h2 { font-size: clamp(24px, 8vw, 32px); }
+  .btn { width: 100%; justify-content: center; }
+  .footer-col a, .footer-about p { font-size: 0.95rem; }
+}
+@media (hover: none) and (pointer: coarse) {
+  .btn:hover, .service-card:hover, .project-card:hover, .footer-social a:hover { transform: none; box-shadow: none; }
 }
 </style>
 </head>
 <body>
 
 <div id="preloader">
-  <div class="pre-gate">
-    <div class="gate-frame"></div>
-    <div class="gate-leaf gate-left"></div>
-    <div class="gate-leaf gate-right"></div>
+  <div class="pre-loader-panel">
+    <div class="pre-loader-title">IP INŽENJERING 032</div>
+    <div class="pre-loader-bar">
+      <div class="pre-loader-progress" id="preloaderProgress"></div>
+    </div>
+    <div class="pre-loader-text"><span id="preloaderPercent">0%</span></div>
   </div>
 </div>
 
@@ -1068,14 +1146,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
     </a>
     <nav class="main-nav" id="mainNav">
       <a href="#o-nama">O nama</a>
-      <div class="nav-dropdown">
-        <button type="button" class="nav-link" aria-expanded="false">Usluge</button>
-        <div class="dropdown-menu" role="menu">
-          <a href="#ormari">Elektroormari</a>
-          <a href="#automatizacija">Automatizacija</a>
-          <a href="#kapije">Kapije</a>
-        </div>
-      </div>
+      <a href="#usluge">Usluge</a>
       <a href="#realizacije">Projekti</a>
       <a href="#pitanja">Pitanja</a>
       <a href="#kontakt">Kontakt</a>
@@ -1092,7 +1163,6 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
     </div>
   </div>
 </header>
-
 <main>
 <section class="hero" id="hero">
   <canvas id="hero-canvas"></canvas>
@@ -1358,6 +1428,11 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
 <section class="section gates" id="kapije">
   <div class="container">
     <div class="gates-grid">
+      <div class="gates-copy" data-reveal data-reveal-delay="1">
+        <span class="eyebrow">Kapije i motori</span>
+        <h2 style="font-size:clamp(38px,5vw,64px); text-transform:uppercase; font-family:var(--f-display); margin:12px 0 20px;">Automatika pogodna<br>za svaki ulaz</h2>
+        <p style="color:var(--text-muted); font-size:18px; line-height:1.8;">Ugrađujemo pouzdane motore za klizne i krilne kapije — od porodičnih dvorišta do ulaza industrijskih pogona, sa automatikom koja radi bez zastoja.</p>
+      </div>
       <div class="gate-visual" data-reveal>
         <svg viewBox="0 0 640 420" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
           <defs>
@@ -1394,14 +1469,10 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
           <path d="M110 130c40 0 70-8 82 10" stroke="rgba(47,143,224,0.4)" stroke-width="2" fill="none" opacity=".8"/>
         </svg>
       </div>
-      <div class="gates-copy" data-reveal data-reveal-delay="1">
-        <span class="eyebrow">Kapije i motori</span>
-        <h2 style="font-size:clamp(38px,5vw,64px); text-transform:uppercase; font-family:var(--f-display); margin:12px 0 20px;">Automatika pogodna<br>za svaki ulaz</h2>
-        <p style="color:var(--text-muted); font-size:18px; line-height:1.8;">Ugrađujemo pouzdane motore za klizne i krilne kapije — od porodičnih dvorišta do ulaza industrijskih pogona, sa automatikom koja radi bez zastoja.</p>
-        <div class="gate-actions">
-          <button class="btn btn-primary" id="gateToggle" type="button">Otvori kapiju</button>
-          <span class="gate-state"><span class="gate-led" id="gateStatusLed"></span><strong id="gateState">zatvorena</strong></span>
-        </div>
+      </div>
+      <div class="gate-actions" data-reveal>
+        <button class="btn btn-primary" id="gateToggle" type="button">Otvori kapiju</button>
+        <span class="gate-state"><span class="gate-led" id="gateStatusLed"></span><strong id="gateState">zatvorena</strong></span>
       </div>
     </div>
   </div>
@@ -1430,7 +1501,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
         <span class="why-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l6 6L20 6"/></svg></span>
         <h4>Brza i pouzdana realizacija</h4>
       </div>
-      <div class="why-item" data-reveal data-reveal-delay="4" style="grid-column: span 2;">
+      <div class="why-item why-item-wide" data-reveal data-reveal-delay="4">
         <span class="why-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l6 6L20 6"/></svg></span>
         <h4>Dugoročna podrška i servis</h4>
       </div>
@@ -1685,6 +1756,8 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
   "use strict";
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var pre = document.getElementById('preloader');
+  var progress = document.getElementById('preloaderProgress');
+  var percent = document.getElementById('preloaderPercent');
   var p = 0;
   document.body.style.overflow = 'hidden';
   var loadTimer = setInterval(function(){
@@ -1692,11 +1765,15 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
     if(p >= 100){
       p = 100;
       clearInterval(loadTimer);
-      pre.classList.add('gate-open');
+      if(progress){ progress.style.width = '100%'; }
+      if(percent){ percent.textContent = '100%'; }
       setTimeout(function(){ pre.classList.add('loaded'); document.body.style.overflow = ''; }, 700);
+    } else {
+      if(progress){ progress.style.width = p.toFixed(0) + '%'; }
+      if(percent){ percent.textContent = p.toFixed(0) + '%'; }
     }
   }, 160);
-  window.addEventListener('load', function(){ if(p < 100){ p = 100; pre.classList.add('gate-open'); }});
+  window.addEventListener('load', function(){ if(p < 100){ p = 100; if(progress){ progress.style.width = '100%'; } if(percent){ percent.textContent = '100%'; } setTimeout(function(){ pre.classList.add('loaded'); document.body.style.overflow = ''; }, 700); }});
   
   var header = document.getElementById('siteHeader');
   var onScroll = function(){ header.classList.toggle('scrolled', window.scrollY > 40); };
@@ -1710,6 +1787,17 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
   
   function setIndicator(link){ if(!link || !indicator) return; indicator.style.width = link.offsetWidth + 'px'; indicator.style.transform = 'translateX(' + link.offsetLeft + 'px)'; }
   function clearActive(){ navLinks.forEach(function(link){ link.classList.remove('active'); }); }
+  function setNavOpen(open){
+    if(!nav) return;
+    nav.classList.toggle('open', open);
+    nav.setAttribute('aria-hidden', open ? 'false' : 'true');
+    document.documentElement.classList.toggle('nav-open', open);
+    document.body.classList.toggle('nav-open', open);
+    if(burger){ burger.setAttribute('aria-expanded', open ? 'true' : 'false'); }
+  }
+  // ensure burger icon updates when nav opens/closes
+  var _origSetNavOpen = setNavOpen;
+  setNavOpen = function(open){ _origSetNavOpen(open); setBurgerIcon(open); };
   
   navLinks.forEach(function(link, index){
     if(index === 0){ link.classList.add('active'); }
@@ -1717,14 +1805,38 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
       clearActive();
       link.classList.add('active');
       setIndicator(link);
-      if(nav.classList.contains('open')){ nav.classList.remove('open'); }
+      setNavOpen(false);
     });
     link.addEventListener('mouseenter', function(){ setIndicator(link); });
   });
   
   nav.addEventListener('mouseleave', function(){ var active = nav.querySelector('a.active') || navLinks[0]; setIndicator(active); });
-  window.addEventListener('resize', function(){ setIndicator(nav.querySelector('a.active') || navLinks[0]); });
-  if(burger){ burger.addEventListener('click', function(){ nav.classList.toggle('open'); }); }
+  window.addEventListener('resize', function(){ if(window.innerWidth > 760){ setNavOpen(false); } setIndicator(nav.querySelector('a.active') || navLinks[0]); });
+  if(burger){ 
+    burger.addEventListener('click', function(event){ 
+      event.stopPropagation(); 
+      setNavOpen(!nav.classList.contains('open')); 
+    }); 
+  }
+  document.addEventListener('click', function(event){
+    if(!nav.classList.contains('open')) return;
+    var clickedInsideNav = nav.contains(event.target);
+    var clickedBurger = burger && burger.contains(event.target);
+    if(!clickedInsideNav && !clickedBurger){ setNavOpen(false); }
+  });
+  function setBurgerIcon(open){
+    if(!burger) return;
+    if(open){
+      burger.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18"/><path d="M6 6l12 12"/></svg>';
+      burger.setAttribute('aria-label','Zatvori meni');
+    } else {
+      burger.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>';
+      burger.setAttribute('aria-label','Meni');
+    }
+  }
+  // initialize icon state
+  setBurgerIcon(nav.classList.contains('open'));
+  document.addEventListener('keydown', function(event){ if(event.key === 'Escape'){ setNavOpen(false); }});
   setIndicator(nav.querySelector('a.active'));
   
   var revealEls = document.querySelectorAll('[data-reveal]');
@@ -1745,8 +1857,9 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
       gsap.to('.hero-inner', { y:-24, ease:'none', scrollTrigger:{ trigger:'.hero', start:'top top', end:'bottom top', scrub:true }});
     }
     var steps = document.querySelectorAll('.process-step');
-    gsap.to('#processFg', { width:'100%', ease:'none', scrollTrigger:{ trigger:'.process-track', start:'top 70%', end:'bottom 60%', scrub:.6, onUpdate:function(self){ var idx = Math.floor(self.progress * steps.length); steps.forEach(function(s,i){ s.classList.toggle('is-active', i <= idx-1 || self.progress>=1); }); }} });
-    if(window.matchMedia('(max-width:860px)').matches){ gsap.to('#processFg', {height:'100%', width:'auto', ease:'none', scrollTrigger:{ trigger:'.process-track', start:'top 70%', end:'bottom 60%', scrub:.6 }}); }
+    var isVertical = window.matchMedia('(max-width:860px)').matches;
+    if(isVertical){ gsap.set('#processFg', { height: '0%' }); }
+    gsap.to('#processFg', Object.assign({ ease:'none', scrollTrigger:{ trigger:'.process-track', start:'top 70%', end:'bottom 60%', scrub:.6, onUpdate:function(self){ var idx = Math.floor(self.progress * steps.length); steps.forEach(function(s,i){ s.classList.toggle('is-active', i <= idx-1 || self.progress>=1); }); } } }, isVertical ? { height:'100%', width:'auto' } : { width:'100%' }));
   }
   
   var projectCards = document.querySelectorAll('.project-card');
