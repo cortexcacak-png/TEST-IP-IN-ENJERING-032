@@ -1,0 +1,1812 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IP Inženjering 032 — Elektroinženjering i automatizacija | Čačak</title>
+<meta name="description" content="IP Inženjering 032 — projektovanje i izrada elektroormara, automatizacija industrijskih pogona, PLC sistemi i ugradnja motora za kapije. Čačak, cela Srbija.">
+<meta name="keywords" content="elektroinženjering, elektroormari, automatizacija, PLC sistemi, kapije, motori, Čačak, Srbija">
+<meta property="og:type" content="website">
+<meta property="og:title" content="IP Inženjering 032 — Elektroinženjering i automatizacija">
+<meta property="og:description" content="Projektovanje elektroinstalacija, izrada elektroormara, automatizacija industrijskih pogona i PLC sistemi. Sedište u Čačku, usluge na celoj teritoriji Srbije.">
+<meta property="og:locale" content="sr_RS">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;0,900;1,700&family=Inter:wght@300;400;500;600;700;800&family=Oswald:wght@500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "IP Inženjering 032",
+  "image": "",
+  "description": "Elektroinženjering i automatizacija industrijskih sistema — projektovanje elektroinstalacija, izrada elektroormara, PLC sistemi i ugradnja motora za kapije.",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Čačak",
+    "addressCountry": "RS"
+  },
+  "telephone": "+381641867323",
+  "email": "ipinzenjering.032@gmail.com",
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+      "opens": "08:00",
+      "closes": "20:00"
+    }
+  ],
+  "areaServed": "RS",
+  "url": ""
+}
+</script>
+<style>
+:root {
+  --bg: #07090e;
+  --bg-soft: #0b0f19;
+  --surface: #121826;
+  --surface-soft: #172033;
+  --surface-alt: #1e293b;
+  --border: rgba(255, 255, 255, 0.08);
+  --border-hover: rgba(47, 143, 224, 0.35);
+  --shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+  --accent: #2f8fe0;
+  --accent-glow: rgba(47, 143, 224, 0.4);
+  --accent-alt: #ff7a29;
+  --accent-alt-glow: rgba(255, 122, 41, 0.5);
+  --accent-soft: rgba(47, 143, 224, 0.12);
+  --accent-alt-soft: rgba(255, 122, 41, 0.12);
+  --gradient: linear-gradient(135deg, #2f8fe0, #ff7a29);
+  --gradient-glow: linear-gradient(135deg, rgba(47,143,224,0.3), rgba(255,122,41,0.3));
+  --text: #f8fafc;
+  --text-muted: #94a3b8;
+  --text-soft: #64748b;
+  --text-light: #475569;
+  --f-display: 'Barlow Condensed', sans-serif;
+  --f-label: 'Oswald', sans-serif;
+  --f-body: 'Inter', sans-serif;
+  --f-mono: 'JetBrains Mono', monospace;
+  --container: 1220px;
+  --pad: clamp(20px, 4vw, 60px);
+  --radius: 20px;
+  --radius-lg: 28px;
+  --ease: cubic-bezier(.16, 1, .3, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; color-scheme: dark; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--f-body);
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  background-image: 
+    radial-gradient(circle at 15% 15%, rgba(47, 143, 224, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 85% 65%, rgba(255, 122, 41, 0.04) 0%, transparent 40%);
+}
+
+img, svg { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+ul { margin: 0; padding: 0; list-style: none; }
+button { font: inherit; cursor: pointer; border: none; background: none; }
+::selection { background: var(--accent-alt); color: #fff; }
+:focus-visible { outline: 2px solid var(--accent-alt); outline-offset: 4px; }
+
+.container { max-width: var(--container); margin: 0 auto; padding: 0 var(--pad); }
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--f-label);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--accent-alt);
+}
+.eyebrow::before {
+  content: '';
+  width: 28px;
+  height: 2px;
+  background: var(--accent-alt);
+  display: inline-block;
+  box-shadow: 0 0 10px var(--accent-alt-glow);
+  border-radius: 2px;
+}
+
+.section-title {
+  font-family: var(--f-display);
+  font-size: clamp(36px, 4.5vw, 56px);
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: .01em;
+  text-transform: uppercase;
+  color: var(--text);
+  margin-bottom: 24px;
+}
+
+.section { position: relative; padding: clamp(90px, 11vw, 130px) 0; }
+.section-head { max-width: 680px; margin-bottom: clamp(40px, 6vw, 64px); }
+.section-head h2 { font-size: clamp(40px, 5.5vw, 68px); line-height: 0.98; text-transform: uppercase; letter-spacing: .01em; margin: 12px 0 0; }
+.section-head p { margin-top: 20px; color: var(--text-muted); font-size: 19px; max-width: 58ch; line-height: 1.8; font-weight: 400; }
+
+.btn {
+  font-family: var(--f-label);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  padding: 16px 32px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  transition: all .3s var(--ease);
+  white-space: nowrap;
+  position: relative;
+  z-index: 1;
+}
+.btn svg { width: 16px; height: 16px; flex-shrink: 0; transition: transform .3s var(--ease); }
+.btn-primary {
+  background: var(--gradient);
+  color: #fff;
+  box-shadow: 0 10px 28px rgba(47, 143, 224, 0.28), 0 0 20px rgba(255, 122, 41, 0.15);
+}
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(135deg, #ff7a29, #2f8fe0);
+  border-radius: 999px;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity .3s var(--ease);
+}
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 36px rgba(47, 143, 224, 0.4), 0 0 30px rgba(255, 122, 41, 0.3);
+}
+.btn-primary:hover::before { opacity: 1; }
+.btn-primary:hover svg { transform: translateX(3px); }
+
+.btn-outline {
+  border: 1px solid var(--border);
+  color: var(--text);
+  background: rgba(18, 24, 38, 0.6);
+  backdrop-filter: blur(12px);
+}
+.btn-outline:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent);
+  color: #fff;
+  box-shadow: 0 10px 25px rgba(47, 143, 224, 0.2);
+  background: rgba(47, 143, 224, 0.1);
+}
+
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity .8s var(--ease), transform .8s var(--ease);
+}
+[data-reveal].is-visible { opacity: 1; transform: translateY(0); }
+[data-reveal-delay="1"] { transition-delay: .1s; }
+[data-reveal-delay="2"] { transition-delay: .2s; }
+[data-reveal-delay="3"] { transition-delay: .3s; }
+[data-reveal-delay="4"] { transition-delay: .4s; }
+
+/* Preloader */
+#preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #05070a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity .6s var(--ease), visibility .6s var(--ease);
+}
+#preloader.loaded { opacity: 0; visibility: hidden; }
+.pre-gate {
+  position: relative;
+  width: 260px;
+  height: 190px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 32px;
+  box-shadow: 0 30px 90px rgba(0,0,0,0.8), 0 0 40px rgba(47,143,224,0.15);
+  overflow: hidden;
+}
+.gate-frame { position: absolute; inset: 0; border: 1px solid rgba(255,255,255,0.05); border-radius: 32px; pointer-events: none; }
+.gate-leaf {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(180deg, #172033 0%, #0b0f19 100%);
+  border-right: 1px solid var(--accent);
+  transition: transform .85s cubic-bezier(.77,0,.175,1);
+}
+.gate-left { left: 0; transform-origin: left center; }
+.gate-right { right: 0; border-right: none; border-left: 1px solid var(--accent-alt); transform-origin: right center; }
+#preloader.gate-open .gate-left { transform: translateX(-102%); }
+#preloader.gate-open .gate-right { transform: translateX(102%); }
+
+/* Header */
+.site-header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 500;
+  padding: 24px 0;
+  transition: all .35s var(--ease);
+  background: transparent;
+}
+.site-header.scrolled {
+  background: rgba(7, 9, 14, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+.header-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.logo, .site-logo { display: flex; align-items: center; gap: 14px; }
+.logo-mark { display: flex; align-items: center; justify-content: center; position: relative; max-width: 560px; flex-shrink: 0; }
+.site-header .logo-mark svg { width: auto; max-width: 560px; height: 62px; display: block; filter: drop-shadow(0 0 12px rgba(47,143,224,0.3)); }
+.site-footer .logo-mark { max-width: 380px; }
+.site-footer .logo-mark svg { max-width: 380px; height: 80px; }
+.logo-text {
+  display: block;
+  font-family: var(--f-display);
+  font-weight: 900;
+  font-size: clamp(20px, 2.2vw, 28px);
+  line-height: 1;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--text);
+  white-space: nowrap;
+}
+.logo-032 {
+  display: inline;
+  color: var(--accent-alt);
+  filter: drop-shadow(0px 0px 10px rgba(255, 122, 41, 0.8));
+}
+.logo-text span { display: none; }
+.logo-text .logo-032 { display: inline !important; }
+
+.main-nav { display: flex; align-items: center; gap: 28px; position: relative; }
+.main-nav a,
+.main-nav .nav-link {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  color: var(--text-muted);
+  font-family: var(--f-label);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  transition: color .25s var(--ease);
+  padding: 8px 0;
+  white-space: nowrap;
+}
+.main-nav a.active,
+.main-nav .nav-link:hover,
+.main-nav a:hover { color: #fff; text-shadow: 0 0 12px rgba(255,255,255,0.4); }
+
+.nav-dropdown { position: relative; }
+.nav-dropdown .nav-link { display: flex; align-items: center; gap: 6px; cursor: pointer; background: none; border: none; }
+.nav-dropdown .dropdown-menu {
+  position: absolute;
+  top: calc(100% + 14px);
+  left: 50%;
+  transform: translateX(-50%) translateY(12px);
+  min-width: 220px;
+  background: rgba(18, 24, 38, 0.95);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow), 0 0 30px rgba(0,0,0,0.5);
+  padding: 10px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all .25s var(--ease);
+  z-index: 30;
+}
+.nav-dropdown.open .dropdown-menu,
+.nav-dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+.nav-dropdown .dropdown-menu a {
+  display: block;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-muted);
+  border-radius: 12px;
+  transition: all .2s var(--ease);
+}
+.nav-dropdown .dropdown-menu a:hover { background: rgba(47, 143, 224, 0.15); color: #fff; padding-left: 20px; }
+
+.nav-indicator {
+  position: absolute;
+  bottom: -2px;
+  height: 2px;
+  background: var(--gradient);
+  border-radius: 999px;
+  box-shadow: 0 0 10px var(--accent-glow);
+  transition: transform .32s var(--ease), width .32s var(--ease);
+  pointer-events: none;
+}
+
+.header-cta { display: flex; align-items: center; gap: 16px; }
+.burger {
+  display: none;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  align-items: center;
+  justify-content: center;
+  color: var(--text);
+  background: var(--surface);
+  transition: border-color .25s var(--ease);
+}
+.burger:hover { border-color: var(--accent); }
+.burger svg { width: 20px; height: 20px; }
+
+/* Hero */
+.hero {
+  position: relative;
+  min-height: calc(100vh - 80px);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding-top: 170px;
+  padding-bottom: 100px;
+}
+#hero-canvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; opacity: 0.85; }
+.hero::before {
+  content: '';
+  position: absolute;
+  right: -5%;
+  top: 10%;
+  width: 650px;
+  height: 650px;
+  background: radial-gradient(circle at center, rgba(47, 143, 224, 0.15), transparent 60%);
+  pointer-events: none;
+  filter: blur(40px);
+}
+.hero-splash {
+  position: absolute;
+  left: -10%;
+  bottom: 0%;
+  width: 550px;
+  height: 550px;
+  background: radial-gradient(circle at center, rgba(255, 122, 41, 0.12), transparent 55%);
+  pointer-events: none;
+  filter: blur(50px);
+}
+.hero-inner { position: relative; z-index: 2; max-width: 820px; }
+.hero-pre { margin-bottom: 24px; }
+.hero-title {
+  font-size: clamp(48px, 8.5vw, 92px);
+  line-height: 0.92;
+  text-transform: uppercase;
+  letter-spacing: -.01em;
+  font-family: var(--f-display);
+  font-weight: 900;
+  margin: 0;
+}
+.hero-title span {
+  display: inline-block;
+  background: linear-gradient(135deg, #2f8fe0 0%, #60a5fa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 20px rgba(47,143,224,0.3));
+}
+.hero-title span:last-child {
+  background: linear-gradient(135deg, #ff7a29 0%, #ff985c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 20px rgba(255,122,41,0.3));
+}
+.hero-copy {
+  margin-top: 28px;
+  color: var(--text-muted);
+  font-size: clamp(18px, 2vw, 21px);
+  max-width: 54ch;
+  line-height: 1.7;
+}
+.hero-actions { margin-top: 42px; display: flex; flex-wrap: wrap; gap: 18px; }
+
+.hero-scroll {
+  position: absolute;
+  left: var(--pad);
+  bottom: 36px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--text-soft);
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+}
+.hero-scroll .line {
+  width: 1px;
+  height: 50px;
+  background: rgba(255,255,255,0.1);
+  position: relative;
+  overflow: hidden;
+}
+.hero-scroll .line::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: -20px;
+  width: 100%;
+  height: 20px;
+  background: linear-gradient(var(--accent-alt), transparent);
+  animation: scrollpulse 2.2s ease-in-out infinite;
+}
+@keyframes scrollpulse { 0% { top: -20px; } 100% { top: 50px; } }
+
+/* About */
+.about { background: var(--bg-soft); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.about-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 60px; align-items: start; margin-bottom: 70px; }
+.about-text p { color: var(--text-muted); font-size: 18px; line-height: 1.85; font-weight: 400; }
+.about-text p + p { margin-top: 20px; }
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.stat {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 36px 28px;
+  position: relative;
+  overflow: hidden;
+  transition: transform .3s var(--ease), border-color .3s var(--ease);
+}
+.stat::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--gradient);
+  opacity: 0.6;
+}
+.stat:hover { transform: translateY(-4px); border-color: var(--border-hover); }
+.stat-num {
+  font-family: var(--f-display);
+  font-size: clamp(42px, 4.5vw, 60px);
+  font-weight: 900;
+  color: var(--text);
+  line-height: 1;
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+}
+.stat-num .count {
+  background: linear-gradient(135deg, #fff 0%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.stat-label {
+  margin-top: 14px;
+  font-family: var(--f-label);
+  font-size: 12px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+  font-weight: 600;
+}
+
+/* Services */
+.services { background: var(--bg); position: relative; overflow: hidden; }
+.blueprint-grid {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: linear-gradient(rgba(47, 143, 224, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(47, 143, 224, 0.05) 1px, transparent 1px);
+  background-size: 50px 50px;
+  pointer-events: none;
+}
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  position: relative;
+  z-index: 1;
+}
+.service-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 40px 36px 36px;
+  position: relative;
+  border-radius: var(--radius-lg);
+  transition: all .35s var(--ease);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+}
+.service-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--accent);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.7), 0 0 30px rgba(47, 143, 224, 0.2);
+  background: var(--surface-soft);
+}
+.service-icon {
+  width: 58px;
+  height: 58px;
+  color: var(--accent-alt);
+  margin-bottom: 28px;
+  filter: drop-shadow(0px 0px 10px rgba(255, 122, 41, 0.4));
+  transition: transform .35s var(--ease);
+}
+.service-card:hover .service-icon { transform: scale(1.08); }
+.service-card h3 { font-size: 26px; text-transform: uppercase; font-weight: 800; font-family: var(--f-display); line-height: 1.1; color: var(--text); margin: 0; }
+.service-card p { margin-top: 16px; color: var(--text-muted); font-size: 16px; line-height: 1.75; flex-grow: 1; }
+.service-card .eyebrow { margin-top: 28px; align-self: flex-start; }
+
+/* Projects */
+.projects { background: var(--bg-soft); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.projects-filters { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 36px; }
+.filter-btn {
+  font-family: var(--f-label);
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  padding: 12px 24px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-muted);
+  transition: all .25s var(--ease);
+}
+.filter-btn.active, .filter-btn:hover {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  color: #fff;
+  box-shadow: 0 0 20px rgba(47, 143, 224, 0.2);
+}
+
+.projects-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
+.project-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  transition: all .35s var(--ease);
+  display: flex;
+  flex-direction: column;
+}
+.project-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(255, 122, 41, 0.4);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8), 0 0 30px rgba(255, 122, 41, 0.2);
+}
+.project-card img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  cursor: pointer;
+  transition: transform .6s var(--ease);
+}
+.project-card:hover img { transform: scale(1.06); }
+.project-content { padding: 28px; display: flex; flex-direction: column; gap: 14px; flex-grow: 1; background: var(--surface); position: relative; z-index: 2; }
+.project-tag { font-family: var(--f-label); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--accent-alt); font-weight: 700; }
+.project-content h3 { font-size: 22px; font-family: var(--f-display); text-transform: uppercase; line-height: 1.15; font-weight: 800; color: var(--text); margin: 0; }
+.project-open {
+  margin-top: auto;
+  padding: 12px 20px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 122, 41, 0.3);
+  background: var(--accent-alt-soft);
+  color: var(--accent-alt);
+  font-family: var(--f-label);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  transition: all .25s var(--ease);
+  align-self: flex-start;
+}
+.project-open:hover {
+  background: var(--accent-alt);
+  color: #fff;
+  box-shadow: 0 0 20px var(--accent-alt-glow);
+  transform: translateY(-2px);
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 28px;
+  background: rgba(5, 7, 10, 0.85);
+  backdrop-filter: blur(12px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s ease;
+  z-index: 999;
+}
+.modal.open { opacity: 1; pointer-events: auto; }
+.modal-panel {
+  width: min(920px, 100%);
+  max-height: min(92vh, 860px);
+  overflow: auto;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.9), 0 0 40px rgba(47, 143, 224, 0.2);
+  padding: 32px;
+  position: relative;
+}
+.modal-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  background: var(--surface-soft);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  font-size: 18px;
+  transition: all .25s var(--ease);
+  z-index: 10;
+}
+.modal-close:hover { background: var(--accent-alt); color: #fff; border-color: var(--accent-alt); transform: scale(1.05); }
+.modal-image { border-radius: 18px; overflow: hidden; background: #000; max-height: 500px; }
+.modal-image img { width: 100%; height: 100%; object-fit: cover; }
+.modal-copy { padding-top: 24px; display: grid; gap: 12px; }
+.modal-copy h3 { font-size: 32px; font-family: var(--f-display); text-transform: uppercase; margin: 0; }
+.modal-copy p { color: var(--text-muted); font-size: 17px; line-height: 1.8; margin: 0; }
+
+/* Process */
+.process { background: var(--bg); }
+.process-track { position: relative; margin-top: 40px; }
+.process-line-bg, .process-line-fg { position: absolute; left: 0; top: 12px; height: 3px; width: 100%; border-radius: 999px; }
+.process-line-bg { background: rgba(255,255,255,0.08); }
+.process-line-fg { background: var(--gradient); box-shadow: 0 0 16px var(--accent-glow); width: 0%; }
+.process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; position: relative; }
+.process-step { position: relative; padding-top: 56px; }
+.process-dot {
+  position: absolute;
+  left: 0;
+  top: 1px;
+  width: 26px;
+  height: 26px;
+  border: 2px solid var(--border);
+  border-radius: 50%;
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all .3s var(--ease);
+}
+.process-dot::after {
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--text-soft);
+  transition: all .3s var(--ease);
+}
+.process-step.is-active .process-dot { border-color: var(--accent-alt); box-shadow: 0 0 20px var(--accent-alt-glow); }
+.process-step.is-active .process-dot::after { background: var(--accent-alt); }
+.process-num { font-family: var(--f-mono); font-size: 12px; letter-spacing: .1em; color: var(--accent); font-weight: 600; text-transform: uppercase; }
+.process-step h3 { margin-top: 12px; font-size: 26px; font-family: var(--f-display); text-transform: uppercase; font-weight: 800; line-height: 1.1; color: var(--text); }
+.process-step p { margin-top: 12px; color: var(--text-muted); font-size: 15.5px; line-height: 1.75; }
+
+/* PLC & Automation */
+.plc { background: var(--bg-soft); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.plc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.plc-visual {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  padding: 30px;
+  border-radius: var(--radius-lg);
+  position: relative;
+  aspect-ratio: 4/3;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.plc-copy p { color: var(--text-muted); font-size: 18px; line-height: 1.85; }
+.plc-copy p + p { margin-top: 18px; }
+.plc-tags { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 32px; }
+
+/* Gates */
+.gates { background: var(--bg); }
+.gates-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 60px; align-items: center; }
+.gate-visual {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  padding: 28px;
+  border-radius: var(--radius-lg);
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.gate-visual svg { width: 100%; height: auto; display: block; }
+.gate-actions { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; margin-top: 32px; }
+.gate-state {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 22px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface-soft);
+  font-family: var(--f-label);
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.gate-led {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent-alt);
+  box-shadow: 0 0 10px var(--accent-alt-glow);
+  transition: all .3s var(--ease);
+}
+.gate-led.open { background: #10b981; box-shadow: 0 0 14px rgba(16, 185, 129, 0.8); }
+
+/* Why Us */
+.why { background: var(--bg-soft); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.why-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.why-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px 32px;
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  transition: all .3s var(--ease);
+}
+.why-item:hover { transform: translateY(-4px); border-color: var(--accent); background: var(--surface-soft); }
+.why-check { width: 32px; height: 32px; flex-shrink: 0; color: #10b981; margin-top: 2px; filter: drop-shadow(0 0 8px rgba(16, 185, 129, 0.4)); }
+.why-item h4 { font-size: 20px; font-family: var(--f-display); text-transform: uppercase; font-weight: 700; margin: 0; line-height: 1.3; }
+
+/* Coverage */
+.coverage { background: var(--bg); }
+.coverage-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.coverage-map {
+  position: relative;
+  padding: 36px;
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+.coverage-map svg { width: 100%; height: auto; display: block; }
+.coverage-map .rs-outline { fill: rgba(47, 143, 224, 0.06); stroke: rgba(47, 143, 224, 0.4); stroke-width: 4px; }
+.coverage-map .rs-ring { fill: none; stroke: var(--accent-alt); stroke-width: 2.5px; opacity: .8; transform-origin: center center; animation: mapPulse 2.5s ease-out infinite; }
+.coverage-map .rs-marker-core { fill: var(--accent-alt); stroke: #fff; stroke-width: 2.5; filter: drop-shadow(0 0 10px var(--accent-alt-glow)); }
+.coverage-map text { font-family: var(--f-label); font-size: 13px; fill: var(--text); letter-spacing: .12em; text-transform: uppercase; font-weight: 700; }
+.coverage-copy p { color: var(--text-muted); font-size: 18px; line-height: 1.85; }
+.coverage-copy p + p { margin-top: 18px; }
+@keyframes mapPulse { 0% { transform: scale(0.8); opacity: 1; } 100% { transform: scale(2.4); opacity: 0; } }
+
+/* Hours */
+.hours { background: var(--bg-soft); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.hours-panel {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  padding: clamp(32px, 5vw, 56px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 32px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+}
+.hours-rows dl { display: grid; grid-template-columns: auto auto; gap: 14px 36px; margin: 0; }
+.hours-rows dt { font-family: var(--f-label); font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--text-soft); }
+.hours-rows dd { margin: 0; font-family: var(--f-display); font-size: 22px; font-weight: 800; color: var(--text); }
+.status-badge {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid var(--border);
+  padding: 16px 26px;
+  border-radius: 999px;
+  background: var(--surface-soft);
+  font-family: var(--f-label);
+  font-size: 13px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.status-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--accent-alt); flex-shrink: 0; }
+.status-badge.open .status-dot { background: #10b981; box-shadow: 0 0 14px rgba(16, 185, 129, 0.8); }
+.status-badge.open { color: var(--text); border-color: rgba(16, 185, 129, 0.3); background: rgba(16, 185, 129, 0.08); }
+.status-badge.closed .status-dot { background: var(--accent-alt); box-shadow: 0 0 14px var(--accent-alt-glow); }
+
+/* Testimonials */
+.testimonials { background: var(--bg); }
+.testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.testi-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 36px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  transition: transform .35s var(--ease), border-color .35s var(--ease);
+}
+.testi-card:hover { transform: translateY(-6px); border-color: var(--accent); }
+.testi-stars { color: var(--accent-alt); font-size: 16px; letter-spacing: .2em; text-shadow: 0 0 10px var(--accent-alt-glow); }
+.testi-card blockquote { margin: 0; color: var(--text); font-size: 17px; line-height: 1.8; font-weight: 400; flex-grow: 1; }
+.testi-card figcaption { font-family: var(--f-label); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--text-soft); font-weight: 700; }
+
+/* FAQ */
+.faq { background: var(--bg-soft); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.faq-list { display: flex; flex-direction: column; gap: 14px; max-width: 860px; }
+.faq-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: border-color .3s var(--ease);
+}
+.faq-item[open] { border-color: var(--accent); }
+.faq-item summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 24px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  font-family: var(--f-display);
+  font-size: 22px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text);
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-ic {
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-alt);
+  font-size: 18px;
+  transition: transform .3s var(--ease), background .3s var(--ease);
+  font-weight: bold;
+}
+.faq-item[open] .faq-ic { transform: rotate(45deg); background: var(--accent-alt-soft); }
+.faq-item p { padding: 0 28px 26px; color: var(--text-muted); font-size: 16px; line-height: 1.8; margin: 0; }
+
+/* Contact */
+.contact { background: var(--bg); }
+.contact-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 60px; }
+.contact-form { display: flex; flex-direction: column; gap: 20px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.field { display: flex; flex-direction: column; gap: 8px; }
+.field label { font-family: var(--f-label); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--text-muted); }
+.field input, .field select, .field textarea {
+  background: var(--surface-soft);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 16px 20px;
+  font-family: var(--f-body);
+  font-size: 15px;
+  border-radius: 14px;
+  transition: border-color .25s var(--ease), box-shadow .25s var(--ease);
+}
+.field input:focus, .field select:focus, .field textarea:focus {
+  border-color: var(--accent);
+  outline: none;
+  box-shadow: 0 0 0 4px var(--accent-soft);
+}
+.field textarea { resize: vertical; min-height: 140px; }
+.form-status { font-family: var(--f-mono); font-size: 13px; min-height: 22px; }
+.form-status.ok { color: #10b981; }
+.form-status.err { color: var(--accent-alt); }
+
+.contact-side { display: flex; flex-direction: column; gap: 14px; }
+.contact-block {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px 26px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  transition: all .3s var(--ease);
+}
+.contact-block:hover { background: var(--surface-soft); border-color: var(--accent); transform: translateX(4px); }
+.contact-block .ic { width: 24px; height: 24px; color: var(--accent-alt); flex-shrink: 0; filter: drop-shadow(0 0 8px var(--accent-alt-glow)); }
+.contact-block .lbl { font-family: var(--f-label); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--text-soft); }
+.contact-block .val { font-size: 17px; font-weight: 700; margin-top: 2px; color: var(--text); }
+
+.map-embed {
+  border: 1px solid var(--border);
+  height: 260px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+.map-embed iframe { width: 100%; height: 100%; border: 0; display: block; filter: grayscale(0.8) invert(0.9) contrast(1.2); }
+
+/* Footer */
+.site-footer { background: #040609; border-top: 1px solid var(--border); padding: 80px 0 30px; }
+.footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 50px; padding-bottom: 48px; }
+.footer-about p { margin-top: 20px; color: var(--text-muted); font-size: 15px; max-width: 38ch; line-height: 1.8; }
+.footer-col h5 { font-family: var(--f-label); font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--text-soft); margin-bottom: 20px; margin-top: 0; }
+.footer-col ul { display: flex; flex-direction: column; gap: 12px; }
+.footer-col a { color: var(--text-muted); font-size: 15px; transition: color .25s var(--ease); }
+.footer-col a:hover { color: var(--accent); }
+.footer-bottom {
+  border-top: 1px solid var(--border);
+  padding-top: 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-family: var(--f-mono);
+  font-size: 12px;
+  color: var(--text-soft);
+}
+.footer-social { display: flex; gap: 12px; }
+.footer-social a {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  transition: all .25s var(--ease);
+  background: var(--surface);
+}
+.footer-social a:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+.footer-social svg { width: 18px; height: 18px; }
+
+@media(max-width: 980px) {
+  .service-grid, .projects-grid { grid-template-columns: repeat(2, 1fr); }
+  .contact-grid, .plc-grid, .coverage-grid, .gates-grid, .about-grid { grid-template-columns: 1fr; }
+}
+@media(max-width: 760px) {
+  .service-grid, .projects-grid, .why-list, .footer-grid, .testi-grid { grid-template-columns: 1fr; }
+  .main-nav {
+    position: fixed; top: 0; right: 0; height: 100vh; width: min(320px, 80vw);
+    background: rgba(11, 15, 25, 0.98); backdrop-filter: blur(20px);
+    border-left: 1px solid var(--border); flex-direction: column; align-items: flex-start;
+    justify-content: center; gap: 24px; padding: 40px var(--pad); transform: translateX(100%);
+    transition: transform .4s var(--ease); z-index: 520;
+  }
+  .main-nav.open { transform: translateX(0); }
+  .header-cta .btn-outline { display: none; }
+  .burger { display: inline-flex; }
+  .hero { padding-top: 130px; padding-bottom: 64px; }
+  .hero-scroll { display: none; }
+  .stat-grid { grid-template-columns: 1fr; }
+  .process-steps { grid-template-columns: 1fr; }
+  .process-line-bg, .process-line-fg { left: 12px; top: 0; width: 2px; height: 100%; }
+  .process-step { padding-top: 0; padding-left: 48px; }
+  .process-dot { left: 0; top: 2px; }
+  .form-row { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div id="preloader">
+  <div class="pre-gate">
+    <div class="gate-frame"></div>
+    <div class="gate-leaf gate-left"></div>
+    <div class="gate-leaf gate-right"></div>
+  </div>
+</div>
+
+<header class="site-header" id="siteHeader">
+  <div class="container header-inner">
+    <a href="#hero" class="logo" aria-label="IP Inženjering 032">
+      <span class="logo-mark" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 180" preserveAspectRatio="xMidYMid meet">
+          <defs>
+            <style>
+              .glow-orange { filter: drop-shadow(0px 0px 10px rgba(255, 140, 0, 0.8)); }
+              .glow-blue { filter: drop-shadow(0px 0px 10px rgba(33, 150, 243, 0.7)); }
+            </style>
+          </defs>
+          <g transform="translate(20, 10)">
+            <path d="M 50,115 L 44,92 A 40,40 0 1,1 106,92 L 100,115" fill="none" stroke="#2196F3" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <g transform="rotate(40, 75, 75)">
+              <path d="M 52,95 L 52,55 M 42,65 L 52,55 L 62,65" fill="none" stroke="#2196F3" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M 75,105 L 75,40 M 62,53 L 75,40 L 88,53" fill="none" stroke="#FF8C00" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M 98,88 L 98,48 M 88,58 L 98,48 L 108,58" fill="none" stroke="#2196F3" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </g>
+            <g class="glow-orange">
+              <rect x="47" y="122" width="56" height="7" rx="2.5" fill="#FF8C00" />
+              <rect x="53" y="133" width="44" height="7" rx="2.5" fill="#FF8C00" />
+              <path d="M 62,144 L 88,144 L 82,153 L 68,153 Z" fill="#FF8C00" />
+            </g>
+          </g>
+        </svg>
+      </span>
+      <span class="logo-text">IP INŽENJERING <span class="logo-032">032</span></span>
+    </a>
+    <nav class="main-nav" id="mainNav">
+      <a href="#o-nama">O nama</a>
+      <div class="nav-dropdown">
+        <button type="button" class="nav-link" aria-expanded="false">Usluge</button>
+        <div class="dropdown-menu" role="menu">
+          <a href="#ormari">Elektroormari</a>
+          <a href="#automatizacija">Automatizacija</a>
+          <a href="#kapije">Kapije</a>
+        </div>
+      </div>
+      <a href="#realizacije">Projekti</a>
+      <a href="#pitanja">Pitanja</a>
+      <a href="#kontakt">Kontakt</a>
+      <span class="nav-indicator" aria-hidden="true"></span>
+    </nav>
+    <div class="header-cta">
+      <a href="tel:+381641867323" class="btn btn-outline">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Pozovite nas
+      </a>
+      <button class="burger" id="burgerBtn" aria-label="Meni">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="hero">
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-splash"></div>
+  <div class="container hero-inner">
+    <div class="hero-pre" data-reveal>
+      <span class="eyebrow">Inženjering koji pokreće</span>
+    </div>
+    <h1 class="hero-title" data-reveal>IP <span>INŽENJERING</span> <span>032</span> CACAK</h1>
+    <p class="hero-copy" data-reveal data-reveal-delay="1">IP Inženjering 032 povezuje elektroinstalacije, PLC upravljanje i kapijske motore u jedno pouzdano rešenje.</p>
+    <div class="hero-actions" data-reveal data-reveal-delay="2">
+      <a href="tel:+381641867323" class="btn btn-primary">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Pozovite nas
+      </a>
+      <a href="#kontakt" class="btn btn-outline">Zatražite ponudu</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Skroluj</span>
+    <span class="line"></span>
+  </div>
+</section>
+
+<section class="section about" id="o-nama">
+  <div class="container">
+    <div class="about-grid">
+      <div>
+        <span class="eyebrow" data-reveal>O nama</span>
+        <h2 class="section-title" data-reveal style="margin-top:12px;">O preduzeću</h2>
+      </div>
+      <div class="about-text" data-reveal data-reveal-delay="1">
+        <p>IP Inženjering 032 je preduzeće iz Čačka specijalizovano za elektroinženjering i automatizaciju industrijskih sistema. Projektujemo i izrađujemo elektroormare, uvodimo automatizaciju u proizvodne pogone i implementiramo PLC sisteme prilagođene svakom klijentu.</p>
+        <p>Radimo za vlasnike pogona i tehnička lica kojima je pouzdanost sistema jednako važna kao i rok isporuke — od prvog nacrta do puštanja u rad.</p>
+      </div>
+    </div>
+    <div class="stat-grid" data-reveal data-reveal-delay="2">
+      <div class="stat">
+        <div class="stat-num"><span class="count" data-count="10">0</span>+</div>
+        <div class="stat-label">Godina iskustva</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num"><span class="count" data-count="200">0</span>+</div>
+        <div class="stat-label">Realizovanih projekata</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num"><span class="count" data-count="100">0</span>%</div>
+        <div class="stat-label">Pouzdanost sistema</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section services" id="usluge">
+  <div class="blueprint-grid"></div>
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" data-reveal>Usluge</span>
+      <h2 data-reveal>Automatsko upravljanje<br>u industriji</h2>
+      <p data-reveal>Od projekta na papiru do sistema koji radi 24/7 — pokrivamo ceo proces elektroinstalacija i automatizacije.</p>
+    </div>
+    <div class="service-grid">
+      <article class="service-card" data-reveal>
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="8" width="10" height="14" rx="1"/><circle cx="10.5" cy="14" r=".6" fill="currentColor" stroke="none"/><circle cx="13.5" cy="14" r=".6" fill="currentColor" stroke="none"/><path d="M9 8V5a3 3 0 0 1 6 0v3"/></svg></div>
+        <h3>Elektroinstalacije</h3>
+        <p>Projektovanje elektroinstalacija za stambene i industrijske objekte, po važećim standardima i normativima.</p>
+        <span class="eyebrow">Usluga 01</span>
+      </article>
+      <article class="service-card" data-reveal data-reveal-delay="1">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M8 8h8M8 12h8M8 16h4"/><circle cx="17" cy="16" r="1" fill="currentColor" stroke="none"/></svg></div>
+        <h3>Elektroormari</h3>
+        <p>Projektovanje i izrada komandnih, razvodnih i upravljačkih ormana po meri pogona.</p>
+        <span class="eyebrow">Usluga 02</span>
+      </article>
+      <article class="service-card" data-reveal data-reveal-delay="2">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.2"/><path d="M12 3v2.2M12 18.8V21M4.9 4.9l1.55 1.55M17.55 17.55l1.55 1.55M3 12h2.2M18.8 12H21M4.9 19.1l1.55-1.55M17.55 6.45l1.55-1.55"/></svg></div>
+        <h3>Automatizacija</h3>
+        <p>Automatizacija mašina, proizvodnih linija i celih pogona za stabilan i predvidiv rad.</p>
+        <span class="eyebrow">Usluga 03</span>
+      </article>
+      <article class="service-card" data-reveal data-reveal-delay="3">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12" rx="1.5"/><path d="M9 6V3M15 6V3M9 21v-3M15 21v-3M6 9H3M6 15H3M21 9h-3M21 15h-3"/></svg></div>
+        <h3>PLC &amp; senzori</h3>
+        <p>Implementacija PLC sistema i senzorskih tehnologija za preciznu kontrolu procesa.</p>
+        <span class="eyebrow">Usluga 04</span>
+      </article>
+      <article class="service-card" data-reveal data-reveal-delay="4">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V6l7-3v18M3 21h18M10 21V3l10 3v15M10 9h.01M10 13h.01M14 9h3M14 13h3"/></svg></div>
+        <h3>Kapije i motori</h3>
+        <p>Ugradnja motora za klizne i krilne kapije, sa pouzdanom automatikom pokretanja.</p>
+        <span class="eyebrow">Usluga 05</span>
+      </article>
+      <article class="service-card" data-reveal data-reveal-delay="4">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+        <h3>Održavanje i servis</h3>
+        <p>Redovno servisiranje, dijagnostika kvarova i brza intervencija kako bi sistem radio bez zastoja.</p>
+        <span class="eyebrow">Usluga 06</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section projects" id="realizacije">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" data-reveal>Realizacije</span>
+      <h2 data-reveal>Naši radovi<br>u stvarnim okruženjima</h2>
+      <p data-reveal>Galerija projektnih primera koji pokazuju kako dizajn i automatizacija funkcionišu zajedno.</p>
+    </div>
+    <div class="projects-filters" data-reveal data-reveal-delay="1">
+      <button type="button" class="filter-btn active" data-filter="all">Sve</button>
+      <button type="button" class="filter-btn" data-filter="Elektroormari">Elektroormari</button>
+      <button type="button" class="filter-btn" data-filter="Automatizacija">Automatizacija</button>
+      <button type="button" class="filter-btn" data-filter="Kapije i motori">Kapije i motori</button>
+    </div>
+    <div class="projects-grid">
+      <article class="project-card" data-category="Elektroormari" data-title="Elektroormar sa PLC kontrolom" data-desc="Kompletno opremljen elektroormar za upravljanje industrijskom linijom.">
+        <img src="IP KAPIJE/elektroormari-plc-ormar.jpeg" alt="Elektroormar sa PLC kontrolom">
+        <div class="project-content">
+          <span class="project-tag">Elektroormari</span>
+          <h3>Elektroormar sa PLC kontrolom</h3>
+          <button type="button" class="project-open">Pogledaj projekat</button>
+        </div>
+      </article>
+      <article class="project-card" data-category="Elektroormari" data-title="Razvodni ormar za pogon" data-desc="Razvodni ormar sa preglednim rasporedom i sigurnosnim elementima.">
+        <img src="IP KAPIJE/elektroormari-razvodni-ormar.jpeg" alt="Razvodni ormar za pogon">
+        <div class="project-content">
+          <span class="project-tag">Elektroormari</span>
+          <h3>Razvodni ormar za pogon</h3>
+          <button type="button" class="project-open">Pogledaj projekat</button>
+        </div>
+      </article>
+      <article class="project-card" data-category="Automatizacija" data-title="Automatizacija proizvodne linije" data-desc="Sistem senzora i PLC logike za stabilno upravljanje linijom.">
+        <img src="IP KAPIJE/automatizacija-linija.jpeg" alt="Automatizacija proizvodne linije">
+        <div class="project-content">
+          <span class="project-tag">Automatizacija</span>
+          <h3>Automatizacija proizvodne linije</h3>
+          <button type="button" class="project-open">Pogledaj projekat</button>
+        </div>
+      </article>
+      <article class="project-card" data-category="Automatizacija" data-title="Daljinski nadzor sistema" data-desc="Daljinski nadzor i upravljanje sa pouzdanim signalnim statusima.">
+        <img src="IP KAPIJE/automatizacija-nadzor.jpeg" alt="Daljinski nadzor sistema">
+        <div class="project-content">
+          <span class="project-tag">Automatizacija</span>
+          <h3>Daljinski nadzor sistema</h3>
+          <button type="button" class="project-open">Pogledaj projekat</button>
+        </div>
+      </article>
+      <article class="project-card" data-category="Kapije i motori" data-title="Klizna kapija sa motorom" data-desc="Klizna kapija sa automatikom i sigurnosnim senzorima za domaćinstvo.">
+        <img src="IP KAPIJE/kapije-klizna-kapija.jpeg" alt="Klizna kapija sa motorom">
+        <div class="project-content">
+          <span class="project-tag">Kapije i motori</span>
+          <h3>Klizna kapija sa motorom</h3>
+          <button type="button" class="project-open">Pogledaj projekat</button>
+        </div>
+      </article>
+      <article class="project-card" data-category="Kapije i motori" data-title="Krilna kapija za industrijski ulaz" data-desc="Krilna kapija sa motorom i kontrolom za brz rad i dug vek.">
+        <img src="IP KAPIJE/kapije-krilna-kapija.jpeg" alt="Krilna kapija za industrijski ulaz">
+        <div class="project-content">
+          <span class="project-tag">Kapije i motori</span>
+          <h3>Krilna kapija za industrijski ulaz</h3>
+          <button type="button" class="project-open">Pogledaj projekat</button>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<div class="modal" id="projectModal" aria-hidden="true">
+  <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="projectModalTitle">
+    <button class="modal-close" type="button" aria-label="Zatvori galeriju">✕</button>
+    <div class="modal-image"><img id="modalImage" src="" alt="Projekt fotografija"></div>
+    <div class="modal-copy">
+      <h3 id="projectModalTitle"></h3>
+      <p id="projectModalDesc"></p>
+    </div>
+  </div>
+</div>
+
+<section class="section process" id="ormari">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" data-reveal>Elektroormari</span>
+      <h2 data-reveal>Od skice<br>do puštanja u rad</h2>
+      <p data-reveal>Svaki ormar prolazi kroz isti proveren proces — bez prečica, bez kompromisa u kvalitetu.</p>
+    </div>
+    <div class="process-track">
+      <div class="process-line-bg"></div>
+      <div class="process-line-fg" id="processFg"></div>
+      <div class="process-steps" id="processSteps">
+        <div class="process-step">
+          <div class="process-dot"></div>
+          <div class="process-num">Korak 01</div>
+          <h3>Planiranje</h3>
+          <p>Projektovanje prema tačnim zahtevima pogona i tehnološkog procesa.</p>
+        </div>
+        <div class="process-step">
+          <div class="process-dot"></div>
+          <div class="process-num">Korak 02</div>
+          <h3>Komponente</h3>
+          <p>Kvalitetne komponente proverenih proizvođača i pouzdani spojevi.</p>
+        </div>
+        <div class="process-step">
+          <div class="process-dot"></div>
+          <div class="process-num">Korak 03</div>
+          <h3>Testiranje</h3>
+          <p>Detaljno testiranje sistema pre isporuke, pod realnim opterećenjem.</p>
+        </div>
+        <div class="process-step">
+          <div class="process-dot"></div>
+          <div class="process-num">Korak 04</div>
+          <h3>Sertifikacija</h3>
+          <p>Sertifikacija i puštanje u rad, uz predaju dokumentacije.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section plc" id="automatizacija">
+  <div class="container">
+    <div class="plc-grid">
+      <div class="plc-copy">
+        <span class="eyebrow" data-reveal>Automatizacija &amp; PLC</span>
+        <h2 data-reveal style="font-size:clamp(38px,5vw,64px); text-transform:uppercase; font-family:var(--f-display); margin:12px 0 20px;">Kontrola procesa,<br>bez izuzetaka</h2>
+        <div data-reveal data-reveal-delay="1">
+          <p>PLC sistemi i senzorske tehnologije koje ugrađujemo omogućavaju preciznu kontrolu proizvodnog procesa — od pojedinačne mašine do cele linije.</p>
+          <p>Fokus je na stabilnosti: sistem koji radi predvidivo, danju i noću, bez nadzora čoveka na svakom koraku.</p>
+        </div>
+        <div class="plc-tags" data-reveal data-reveal-delay="2">
+          <span class="eyebrow">Rad 24/7</span>
+          <span class="eyebrow">Daljinski nadzor</span>
+          <span class="eyebrow">Preciznost ±0.1%</span>
+        </div>
+      </div>
+      <div class="plc-visual" data-reveal data-reveal-delay="1">
+        <svg viewBox="0 0 440 320" aria-hidden="true">
+          <defs>
+            <linearGradient id="ladderGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#2F8FE0"/>
+              <stop offset="100%" stop-color="#FF7A29"/>
+            </linearGradient>
+          </defs>
+          <rect x="18" y="18" width="404" height="284" rx="24" fill="#0b0f19" stroke="rgba(255,255,255,0.08)" stroke-width="2"/>
+          <line x1="74" y1="50" x2="74" y2="270" stroke="rgba(255,255,255,0.15)" stroke-width="4"/>
+          <line x1="202" y1="50" x2="202" y2="270" stroke="rgba(255,255,255,0.15)" stroke-width="4"/>
+          <line x1="330" y1="50" x2="330" y2="270" stroke="rgba(255,255,255,0.15)" stroke-width="4"/>
+          <path d="M74 90h256" stroke="rgba(255,255,255,0.12)" stroke-width="3"/>
+          <path d="M74 142h256" stroke="rgba(255,255,255,0.12)" stroke-width="3"/>
+          <path d="M74 194h256" stroke="rgba(255,255,255,0.12)" stroke-width="3"/>
+          <path d="M74 246h256" stroke="rgba(255,255,255,0.12)" stroke-width="3"/>
+          <circle cx="130" cy="90" r="10" fill="url(#ladderGrad)"/>
+          <circle cx="258" cy="142" r="10" fill="url(#ladderGrad)"/>
+          <circle cx="386" cy="194" r="10" fill="url(#ladderGrad)"/>
+          <circle cx="160" cy="246" r="10" fill="var(--accent-alt)"/>
+          <path d="M74 90l86 52 68-38 62 52" stroke="#2F8FE0" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity=".9" filter="drop-shadow(0 0 8px rgba(47,143,224,0.6))"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section gates" id="kapije">
+  <div class="container">
+    <div class="gates-grid">
+      <div class="gate-visual" data-reveal>
+        <svg viewBox="0 0 640 420" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="gateFill" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#172033"/>
+              <stop offset="100%" stop-color="#0b0f19"/>
+            </linearGradient>
+            <linearGradient id="postGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#334155"/>
+              <stop offset="100%" stop-color="#1e293b"/>
+            </linearGradient>
+          </defs>
+          <rect x="0" y="0" width="640" height="420" fill="#07090e"/>
+          <rect x="46" y="124" width="20" height="174" rx="8" fill="url(#postGrad)"/>
+          <rect x="576" y="124" width="20" height="174" rx="8" fill="url(#postGrad)"/>
+          <path d="M46 306H623" stroke="rgba(255,255,255,0.15)" stroke-width="4" stroke-linecap="round"/>
+          <g id="gateLeaf">
+            <rect x="90" y="110" width="364" height="200" rx="20" fill="url(#gateFill)" stroke="rgba(255,255,255,0.15)" stroke-width="3"/>
+            <g stroke="rgba(255,255,255,0.1)" stroke-width="2">
+              <line x1="130" y1="140" x2="130" y2="290"/>
+              <line x1="170" y1="140" x2="170" y2="290"/>
+              <line x1="210" y1="140" x2="210" y2="290"/>
+              <line x1="250" y1="140" x2="250" y2="290"/>
+              <line x1="290" y1="140" x2="290" y2="290"/>
+              <line x1="330" y1="140" x2="330" y2="290"/>
+              <line x1="370" y1="140" x2="370" y2="290"/>
+            </g>
+          </g>
+          <rect x="520" y="248" width="88" height="56" rx="16" fill="#121826" stroke="rgba(255,255,255,0.1)" stroke-width="2"/>
+          <rect x="530" y="262" width="70" height="30" rx="10" fill="#0b0f19"/>
+          <circle cx="565" cy="278" r="8" fill="#FF7A29" opacity=".2"/>
+          <circle id="gateLed" cx="590" cy="278" r="8" fill="#FF7A29"/>
+          <path d="M520 240h88" stroke="rgba(255,255,255,0.2)" stroke-width="3" stroke-linecap="round"/>
+          <path d="M110 130c40 0 70-8 82 10" stroke="rgba(47,143,224,0.4)" stroke-width="2" fill="none" opacity=".8"/>
+        </svg>
+      </div>
+      <div class="gates-copy" data-reveal data-reveal-delay="1">
+        <span class="eyebrow">Kapije i motori</span>
+        <h2 style="font-size:clamp(38px,5vw,64px); text-transform:uppercase; font-family:var(--f-display); margin:12px 0 20px;">Automatika pogodna<br>za svaki ulaz</h2>
+        <p style="color:var(--text-muted); font-size:18px; line-height:1.8;">Ugrađujemo pouzdane motore za klizne i krilne kapije — od porodičnih dvorišta do ulaza industrijskih pogona, sa automatikom koja radi bez zastoja.</p>
+        <div class="gate-actions">
+          <button class="btn btn-primary" id="gateToggle" type="button">Otvori kapiju</button>
+          <span class="gate-state"><span class="gate-led" id="gateStatusLed"></span><strong id="gateState">zatvorena</strong></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section why">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" data-reveal>Zašto izabrati nas</span>
+      <h2 data-reveal>Pet razloga<br>za poverenje</h2>
+    </div>
+    <div class="why-list">
+      <div class="why-item" data-reveal>
+        <span class="why-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l6 6L20 6"/></svg></span>
+        <h4>Stručan tim elektroinženjera i tehničara</h4>
+      </div>
+      <div class="why-item" data-reveal data-reveal-delay="1">
+        <span class="why-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l6 6L20 6"/></svg></span>
+        <h4>Moderna oprema i precizna automatizacija</h4>
+      </div>
+      <div class="why-item" data-reveal data-reveal-delay="2">
+        <span class="why-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l6 6L20 6"/></svg></span>
+        <h4>Povoljni uslovi i fleksibilan pristup</h4>
+      </div>
+      <div class="why-item" data-reveal data-reveal-delay="3">
+        <span class="why-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l6 6L20 6"/></svg></span>
+        <h4>Brza i pouzdana realizacija</h4>
+      </div>
+      <div class="why-item" data-reveal data-reveal-delay="4" style="grid-column: span 2;">
+        <span class="why-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l6 6L20 6"/></svg></span>
+        <h4>Dugoročna podrška i servis</h4>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section coverage" id="podrucje">
+  <div class="container">
+    <div class="coverage-grid">
+      <div class="coverage-map" data-reveal>
+        <svg viewBox="0 0 360 460" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path class="rs-outline" fill="rgba(47,143,224,.09)" stroke="rgba(47,143,224,.6)" stroke-width="5" d="M96 46 L150 34 L206 30 L252 40 L268 66 L246 92 L268 108 L300 118 L322 150 L318 190 L336 224 L328 268 L300 292 L296 330 L266 358 L238 392 L214 420 L188 412 L182 380 L158 366 L140 336 L108 330 L84 300 L92 268 L70 240 L76 202 L58 176 L64 140 L86 112 L74 82 L96 46 Z"/>
+          <g transform="translate(150,236)">
+            <circle class="rs-ring animate" r="10"/>
+            <circle class="rs-ring animate" r="10"/>
+            <circle class="rs-ring animate" r="10"/>
+            <circle class="rs-marker-core" r="5"/>
+          </g>
+          <text x="164" y="240" font-family="Oswald, sans-serif" font-size="13" fill="#ffffff" letter-spacing="0.08em">ČAČAK</text>
+        </svg>
+      </div>
+      <div class="coverage-copy">
+        <span class="eyebrow" data-reveal>Područje poslovanja</span>
+        <h2 data-reveal style="font-size:clamp(38px,5vw,64px); text-transform:uppercase; font-family:var(--f-display); margin:12px 0 20px;">Sedište u Čačku,<br>rad širom Srbije</h2>
+        <div data-reveal data-reveal-delay="1">
+          <p>Sedište preduzeća nalazi se u Čačku, a usluge projektovanja, izrade i automatizacije pružamo na celoj teritoriji Srbije.</p>
+          <p>Bez obzira na lokaciju pogona, pristupamo svakom projektu sa istom pažnjom prema detalju i rokovima.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section hours">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" data-reveal>Radno vreme</span>
+      <h2 data-reveal>Kada smo<br>dostupni</h2>
+    </div>
+    <div class="hours-panel" data-reveal>
+      <div class="hours-rows">
+        <dl>
+          <dt>Radni dani</dt><dd>08:00 – 20:00h</dd>
+          <dt>Subotom</dt><dd>Po dogovoru</dd>
+          <dt>Nedelja</dt><dd>ZATVORENO</dd>
+        </dl>
+      </div>
+      <div class="status-badge" id="statusBadge">
+        <span class="status-dot"></span>
+        <span id="statusText">Proveravam radno vreme…</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section testimonials" id="utisci">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" data-reveal>Utisci klijenata</span>
+      <h2 data-reveal>Reč koju daju,<br>reč koju drže</h2>
+    </div>
+    <div class="testi-grid">
+      <figure class="testi-card" data-reveal>
+        <div class="testi-stars" aria-hidden="true">★★★★★</div>
+        <blockquote>Ormar su isporučili tačno po dogovorenom roku, a testiranje pre montaže nam je uštedelo dosta vremena na terenu.</blockquote>
+        <figcaption>Vlasnik proizvodnog pogona, Čačak</figcaption>
+      </figure>
+      <figure class="testi-card" data-reveal data-reveal-delay="1">
+        <div class="testi-stars" aria-hidden="true">★★★★★</div>
+        <blockquote>Automatizacija linije radi bez zastoja već drugu godinu. Odziv na svaki poziv je brz, čak i van radnog vremena.</blockquote>
+        <figcaption>Tehnički direktor, prehrambena industrija</figcaption>
+      </figure>
+      <figure class="testi-card" data-reveal data-reveal-delay="2">
+        <div class="testi-stars" aria-hidden="true">★★★★★</div>
+        <blockquote>Motor za kliznu kapiju radi besprekorno od ugradnje. Preporučujem svima kojima treba pouzdano rešenje.</blockquote>
+        <figcaption>Vlasnik porodične kuće, okolina Čačka</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="section faq" id="pitanja">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" data-reveal>Česta pitanja</span>
+      <h2 data-reveal>Pre nego što<br>nas pozovete</h2>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item" data-reveal open>
+        <summary><span>Koliko traje izrada elektroormara?</span><span class="faq-ic">+</span></summary>
+        <p>Zavisno od složenosti, rok izrade je obično od 5 do 15 radnih dana od usaglašavanja projekta, uz mogućnost hitne izrade po dogovoru.</p>
+      </details>
+      <details class="faq-item" data-reveal>
+        <summary><span>Da li radite van teritorije Čačka?</span><span class="faq-ic">+</span></summary>
+        <p>Da, usluge projektovanja, izrade i automatizacije pružamo na celoj teritoriji Srbije, a za veće projekte izlazak na teren je uključen u ponudu.</p>
+      </details>
+      <details class="faq-item" data-reveal>
+        <summary><span>Da li nudite garanciju na izvedene radove?</span><span class="faq-ic">+</span></summary>
+        <p>Svi elektroormari, PLC sistemi i instalacije dolaze sa garancijom, a dokumentaciju i uputstva za rad predajemo prilikom puštanja sistema u rad.</p>
+      </details>
+      <details class="faq-item" data-reveal>
+        <summary><span>Kako izgleda proces dobijanja ponude?</span><span class="faq-ic">+</span></summary>
+        <p>Pošaljete upit putem forme ili telefona, dogovorimo obilazak ili tehnički razgovor, a zatim dostavljamo detaljnu ponudu sa rokom i cenom.</p>
+      </details>
+      <details class="faq-item" data-reveal>
+        <summary><span>Da li pružate hitne intervencije i servis?</span><span class="faq-ic">+</span></summary>
+        <p>Da, za postojeće klijente obezbeđujemo brzu dijagnostiku kvarova i intervenciju kako bi se zastoj u proizvodnji sveo na minimum.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="section contact" id="kontakt">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" data-reveal>Kontakt</span>
+      <h2 data-reveal>Zatražite ponudu</h2>
+      <p data-reveal>Pošaljite upit i javljamo se u najkraćem roku sa predlogom rešenja.</p>
+    </div>
+    <div class="contact-grid">
+      <form class="contact-form" id="contactForm" data-reveal>
+        <div class="form-row">
+          <div class="field">
+            <label for="f-ime">Ime i prezime</label>
+            <input type="text" id="f-ime" name="ime" required>
+          </div>
+          <div class="field">
+            <label for="f-tel">Telefon</label>
+            <input type="tel" id="f-tel" name="telefon" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label for="f-email">Email</label>
+            <input type="email" id="f-email" name="email" required>
+          </div>
+          <div class="field">
+            <label for="f-usluga">Tip usluge</label>
+            <select id="f-usluga" name="usluga">
+              <option>Elektroinstalacije</option>
+              <option>Elektroormari</option>
+              <option>Automatizacija</option>
+              <option>Kapije</option>
+              <option>Ostalo</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label for="f-poruka">Poruka</label>
+          <textarea id="f-poruka" name="poruka" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="align-self:flex-start;">Pošaljite upit</button>
+        <div class="form-status" id="formStatus"></div>
+      </form>
+      <div>
+        <div class="contact-side" data-reveal data-reveal-delay="1">
+          <a class="contact-block" href="tel:+381641867323">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+            <span><span class="lbl">Telefon</span><span class="val"> 064 1867323</span></span>
+          </a>
+          <a class="contact-block" href="mailto:ipinzenjering.032@gmail.com">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg></span>
+            <span><span class="lbl">Email</span><span class="val">  ipinzenjering.032@gmail.com</span></span>
+          </a>
+          <a class="contact-block" href="https://www.facebook.com/ipinzenjering032/?locale=sr_RS" target="_blank" rel="noopener">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></span>
+            <span><span class="lbl">Facebook</span><span class="val">  ipinzenjering032</span></span>
+          </a>
+        </div>
+        <div class="map-embed" data-reveal data-reveal-delay="2" style="margin-top:20px;">
+          <iframe src="https://www.google.com/maps?q=43.87896690697832,20.316959539043587&hl=sr&z=15&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa — IP Inženjering 032 lokacija"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-about">
+        <a href="#hero" class="logo" aria-label="IP Inženjering 032">
+          <span class="logo-mark" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 180" preserveAspectRatio="xMidYMid meet">
+              <defs>
+                <style>
+                  .text-ip { font-family: var(--f-display), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 34px; font-weight: 900; fill: #ffffff; letter-spacing: -0.5px; }
+                  .text-032 { font-family: var(--f-display), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 34px; font-weight: 900; fill: #FF8C00; letter-spacing: 1px; }
+                  .glow-orange { filter: drop-shadow(0px 0px 8px rgba(255, 140, 0, 0.8)); }
+                </style>
+              </defs>
+              <rect width="100%" height="100%" fill="none" />
+              <g transform="translate(20, 10)">
+                <path d="M 50,115 L 44,92 A 40,40 0 1,1 106,92 L 100,115" fill="none" stroke="#2196F3" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <g transform="rotate(40, 75, 75)">
+                  <path d="M 52,95 L 52,55 M 42,65 L 52,55 L 62,65" fill="none" stroke="#2196F3" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M 75,105 L 75,40 M 62,53 L 75,40 L 88,53" fill="none" stroke="#FF8C00" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M 98,88 L 98,48 M 88,58 L 98,48 L 108,58" fill="none" stroke="#2196F3" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </g>
+                <g class="glow-orange">
+                  <rect x="47" y="122" width="56" height="7" rx="2.5" fill="#FF8C00" />
+                  <rect x="53" y="133" width="44" height="7" rx="2.5" fill="#FF8C00" />
+                  <path d="M 62,144 L 88,144 L 82,153 L 68,153 Z" fill="#FF8C00" />
+                </g>
+              </g>
+              <g transform="translate(175, 0)">
+                <text x="0" y="85" class="text-ip">IP INŽENJERING</text>
+                <text x="0" y="140" class="text-032 glow-orange">032</text>
+              </g>
+            </svg>
+          </span>
+        </a>
+        <p>Elektroinženjering i automatizacija industrijskih sistema. Sedište u Čačku, usluge na celoj teritoriji Srbije.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Sekcije</h5>
+        <ul>
+          <li><a href="#o-nama">O nama</a></li>
+          <li><a href="#usluge">Usluge</a></li>
+          <li><a href="#realizacije">Realizacije</a></li>
+          <li><a href="#ormari">Elektroormari</a></li>
+          <li><a href="#automatizacija">Automatizacija</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Kontakt</h5>
+        <ul>
+          <li><a href="tel:+381641867323">064 1867323</a></li>
+          <li><a href="mailto:ipinzenjering.032@gmail.com">ipinzenjering.032@gmail.com</a></li>
+          <li><a href="#kontakt">Zatražite ponudu</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; <span id="year"></span> IP Inženjering 032. Sva prava zadržana.</span>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/ipinzenjering032/?locale=sr_RS" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+(function(){
+  "use strict";
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var pre = document.getElementById('preloader');
+  var p = 0;
+  document.body.style.overflow = 'hidden';
+  var loadTimer = setInterval(function(){
+    p += Math.random()*18 + 6;
+    if(p >= 100){
+      p = 100;
+      clearInterval(loadTimer);
+      pre.classList.add('gate-open');
+      setTimeout(function(){ pre.classList.add('loaded'); document.body.style.overflow = ''; }, 700);
+    }
+  }, 160);
+  window.addEventListener('load', function(){ if(p < 100){ p = 100; pre.classList.add('gate-open'); }});
+  
+  var header = document.getElementById('siteHeader');
+  var onScroll = function(){ header.classList.toggle('scrolled', window.scrollY > 40); };
+  document.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+  
+  var burger = document.getElementById('burgerBtn');
+  var nav = document.getElementById('mainNav');
+  var navLinks = nav.querySelectorAll('a');
+  var indicator = nav.querySelector('.nav-indicator');
+  
+  function setIndicator(link){ if(!link || !indicator) return; indicator.style.width = link.offsetWidth + 'px'; indicator.style.transform = 'translateX(' + link.offsetLeft + 'px)'; }
+  function clearActive(){ navLinks.forEach(function(link){ link.classList.remove('active'); }); }
+  
+  navLinks.forEach(function(link, index){
+    if(index === 0){ link.classList.add('active'); }
+    link.addEventListener('click', function(){
+      clearActive();
+      link.classList.add('active');
+      setIndicator(link);
+      if(nav.classList.contains('open')){ nav.classList.remove('open'); }
+    });
+    link.addEventListener('mouseenter', function(){ setIndicator(link); });
+  });
+  
+  nav.addEventListener('mouseleave', function(){ var active = nav.querySelector('a.active') || navLinks[0]; setIndicator(active); });
+  window.addEventListener('resize', function(){ setIndicator(nav.querySelector('a.active') || navLinks[0]); });
+  if(burger){ burger.addEventListener('click', function(){ nav.classList.toggle('open'); }); }
+  setIndicator(nav.querySelector('a.active'));
+  
+  var revealEls = document.querySelectorAll('[data-reveal]');
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){ entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('is-visible'); io.unobserve(en.target); }}); }, {threshold:.15, rootMargin:'0px 0px -8% 0px'});
+    revealEls.forEach(function(el){ io.observe(el); });
+  } else { revealEls.forEach(function(el){ el.classList.add('is-visible'); }); }
+  
+  var counters = document.querySelectorAll('.count');
+  if('IntersectionObserver' in window && counters.length){
+    var ioC = new IntersectionObserver(function(entries){ entries.forEach(function(en){ if(!en.isIntersecting) return; var el = en.target; var target = parseInt(el.getAttribute('data-count'),10); if(reduceMotion){ el.textContent = target; ioC.unobserve(el); return; } var start = null; var dur = 1600; function step(ts){ if(!start) start = ts; var prog = Math.min((ts-start)/dur, 1); var eased = 1 - Math.pow(1-prog, 3); el.textContent = Math.floor(eased*target); if(prog < 1){ requestAnimationFrame(step); } else { el.textContent = target; }} requestAnimationFrame(step); ioC.unobserve(el); }); }, {threshold:.5});
+    counters.forEach(function(el){ ioC.observe(el); });
+  } else { counters.forEach(function(el){ el.textContent = el.getAttribute('data-count'); }); }
+  
+  if(window.gsap && window.ScrollTrigger){
+    gsap.registerPlugin(ScrollTrigger);
+    if(!reduceMotion){
+      gsap.to('.hero-inner', { y:-24, ease:'none', scrollTrigger:{ trigger:'.hero', start:'top top', end:'bottom top', scrub:true }});
+    }
+    var steps = document.querySelectorAll('.process-step');
+    gsap.to('#processFg', { width:'100%', ease:'none', scrollTrigger:{ trigger:'.process-track', start:'top 70%', end:'bottom 60%', scrub:.6, onUpdate:function(self){ var idx = Math.floor(self.progress * steps.length); steps.forEach(function(s,i){ s.classList.toggle('is-active', i <= idx-1 || self.progress>=1); }); }} });
+    if(window.matchMedia('(max-width:860px)').matches){ gsap.to('#processFg', {height:'100%', width:'auto', ease:'none', scrollTrigger:{ trigger:'.process-track', start:'top 70%', end:'bottom 60%', scrub:.6 }}); }
+  }
+  
+  var projectCards = document.querySelectorAll('.project-card');
+  var filterButtons = document.querySelectorAll('.filter-btn');
+  filterButtons.forEach(function(btn){ btn.addEventListener('click', function(){ var filter = btn.getAttribute('data-filter'); filterButtons.forEach(function(item){ item.classList.toggle('active', item === btn); }); projectCards.forEach(function(card){ var category = card.getAttribute('data-category'); card.style.display = filter === 'all' || category === filter ? '' : 'none'; }); }); });
+  
+  var projectModal = document.getElementById('projectModal');
+  var modalImage = document.getElementById('modalImage');
+  var modalTitle = document.getElementById('projectModalTitle');
+  var modalDesc = document.getElementById('projectModalDesc');
+  var modalClose = projectModal.querySelector('.modal-close');
+  document.querySelectorAll('.project-card .project-open, .project-card img').forEach(function(button){ button.addEventListener('click', function(){ var card = button.closest('.project-card'); modalImage.src = card.querySelector('img').src; modalImage.alt = card.querySelector('img').alt; modalTitle.textContent = card.getAttribute('data-title'); modalDesc.textContent = card.getAttribute('data-desc'); projectModal.classList.add('open'); projectModal.setAttribute('aria-hidden','false'); }); });
+  function closeModal(){ projectModal.classList.remove('open'); projectModal.setAttribute('aria-hidden','true'); }
+  modalClose.addEventListener('click', closeModal);
+  projectModal.addEventListener('click', function(event){ if(event.target === projectModal){ closeModal(); }});
+  document.addEventListener('keydown', function(event){ if(event.key === 'Escape' && projectModal.classList.contains('open')){ closeModal(); }});
+  
+  var gateToggle = document.getElementById('gateToggle');
+  var gateLeaf = document.getElementById('gateLeaf');
+  var gateState = document.getElementById('gateState');
+  var gateStatusLed = document.getElementById('gateStatusLed');
+  var gateOpen = false;
+  var gateTimeline = window.gsap ? gsap.timeline({paused:true}) : null;
+  if(gateTimeline){ gateTimeline.to('#gateLeaf', { x: 188, duration:1.9, ease:'power2.inOut' }); }
+  function updateGate(open){ gateOpen = open; if(gateTimeline){ if(open){ gateTimeline.play(); } else { gateTimeline.reverse(); }} else { gateLeaf.setAttribute('transform', open ? 'translate(188 0)' : 'translate(0 0)'); }
+    gateState.textContent = open ? 'otvorena' : 'zatvorena';
+    gateStatusLed.classList.toggle('open', open);
+    gateToggle.textContent = open ? 'Zatvori kapiju' : 'Otvori kapiju';
+  }
+  if(gateToggle){ gateToggle.addEventListener('click', function(){ updateGate(!gateOpen); }); }
+  
+  (function(){ var badge = document.getElementById('statusBadge'); var text = document.getElementById('statusText'); var now = new Date(); var day = now.getDay(); var hour = now.getHours() + now.getMinutes()/60; var isOpen = false; if(day >= 1 && day <= 5){ isOpen = hour >= 8 && hour < 20; } if(isOpen){ badge.classList.add('open'); text.textContent = 'Otvoreno sada'; } else { badge.classList.add('closed'); text.textContent = day === 6 ? 'Subota — po dogovoru' : 'Trenutno zatvoreno'; } })();
+  
+  var yearEl = document.getElementById('year');
+  if(yearEl){ yearEl.textContent = new Date().getFullYear(); }
+  
+  var form = document.getElementById('contactForm');
+  var status = document.getElementById('formStatus');
+  if(form){
+    form.addEventListener('submit', function(e){ e.preventDefault(); var EMAILJS_PUBLIC_KEY = 'YOUR_PUBLIC_KEY'; var EMAILJS_SERVICE_ID = 'YOUR_SERVICE_ID'; var EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID'; if(window.emailjs && EMAILJS_PUBLIC_KEY !== 'YOUR_PUBLIC_KEY'){ emailjs.init({publicKey: EMAILJS_PUBLIC_KEY}); } if(!window.emailjs || EMAILJS_PUBLIC_KEY === 'YOUR_PUBLIC_KEY'){ status.textContent = 'Forma nije povezana sa EmailJS nalogom. Kontaktirajte nas direktno na 064 1867323.'; status.className = 'form-status err'; return; } status.textContent = 'Slanje u toku…'; status.className = 'form-status'; emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, form).then(function(){ status.textContent = 'Poruka je uspešno poslata. Javljamo se uskoro.'; status.className = 'form-status ok'; form.reset(); }, function(){ status.textContent = 'Greška pri slanju. Pokušajte ponovo ili nas pozovite.'; status.className = 'form-status err'; }); });
+  }
+
+  (function(){ var canvas = document.getElementById('hero-canvas'); if(!canvas) return; var ctx = canvas.getContext('2d'); var dpr = Math.min(window.devicePixelRatio || 1, 2); var W, H; var nodes = []; var edges = []; var pulses = []; var mouse = {x:-9999, y:-9999}; var isMobile = window.innerWidth < 720;
+    function resize(){ var hero = canvas.parentElement; W = hero.offsetWidth; H = hero.offsetHeight; canvas.width = W*dpr; canvas.height = H*dpr; canvas.style.width = W+'px'; canvas.style.height = H+'px'; ctx.setTransform(dpr,0,0,dpr,0,0); buildGrid(); }
+    function buildGrid(){ nodes=[]; edges=[]; pulses=[]; isMobile = window.innerWidth < 720; var cell = isMobile ? 120 : 90; var cols = Math.ceil(W/cell)+1; var rows = Math.ceil(H/cell)+1; var grid=[]; for(var r=0;r<rows;r++){ grid[r]=[]; for(var c=0;c<cols;c++){ var jitterX=(Math.random()-0.5)*cell*0.5; var jitterY=(Math.random()-0.5)*cell*0.5; var n={x:c*cell+jitterX,y:r*cell+jitterY,glow:0}; grid[r][c]=nodes.length; nodes.push(n); }} var density = isMobile ? 0.42 : 0.55; for(var r=0;r<rows;r++){ for(var c=0;c<cols;c++){ if(c<cols-1 && Math.random()<density){ edges.push([grid[r][c],grid[r][c+1]]); } if(r<rows-1 && Math.random()<density){ edges.push([grid[r][c],grid[r+1][c]]); } }} var pulseCount = isMobile ? 7 : 14; for(var i=0;i<pulseCount && edges.length;i++){ spawnPulse(); }}
+    function spawnPulse(){ if(!edges.length) return; var startEdgeIdx = Math.floor(Math.random()*edges.length); pulses.push({edgeIdx:startEdgeIdx,t:Math.random(),speed:0.0035+Math.random()*0.004,life:1}); }
+    function findNextEdge(nodeIdx,cameFromIdx){ var candidates=[]; for(var i=0;i<edges.length;i++){ var e=edges[i]; if(e[0]===nodeIdx && e[1]!==cameFromIdx) candidates.push({idx:i,dir:1}); else if(e[1]===nodeIdx && e[0]!==cameFromIdx) candidates.push({idx:i,dir:-1}); } if(!candidates.length){ for(var j=0;j<edges.length;j++){ var e2=edges[j]; if(e2[0]===nodeIdx) candidates.push({idx:j,dir:1}); else if(e2[1]===nodeIdx) candidates.push({idx:j,dir:-1}); }} return candidates.length ? candidates[Math.floor(Math.random()*candidates.length)] : null; }
+    function draw(){ ctx.clearRect(0,0,W,H); ctx.lineWidth=1; for(var i=0;i<edges.length;i++){ var e=edges[i]; var a=nodes[e[0]]; var b=nodes[e[1]]; ctx.strokeStyle='rgba(47,143,224,0.14)'; ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke(); }
+      for(var n=0;n<nodes.length;n++){ var node=nodes[n]; var dx=node.x-mouse.x, dy=node.y-mouse.y; var dist=Math.sqrt(dx*dx+dy*dy); var targetGlow = dist < 140 ? (1-dist/140) : 0; node.glow += (targetGlow-node.glow)*0.12; }
+      for(var n2=0;n2<nodes.length;n2++){ var nd=nodes[n2]; var r=1.4+nd.glow*3.2; var alpha=0.28+nd.glow*0.6; ctx.beginPath(); ctx.fillStyle='rgba(255,122,41,'+alpha+')'; ctx.arc(nd.x,nd.y,r,0,Math.PI*2); ctx.fill(); if(nd.glow > 0.08){ ctx.beginPath(); var grad=ctx.createRadialGradient(nd.x,nd.y,0,nd.x,nd.y,26*nd.glow+4); grad.addColorStop(0,'rgba(255,122,41,'+(0.32*nd.glow)+')'); grad.addColorStop(1,'rgba(255,122,41,0)'); ctx.fillStyle=grad; ctx.arc(nd.x,nd.y,26*nd.glow+4,0,Math.PI*2); ctx.fill(); }}
+      if(!reduceMotion){ for(var p=pulses.length-1;p>=0;p--){ var pu=pulses[p]; var e2=edges[pu.edgeIdx]; if(!e2){ pulses.splice(p,1); continue; } var a2=nodes[e2[0]], b2=nodes[e2[1]]; pu.t += pu.speed; if(pu.t >= 1){ var arrivedIdx = e2[1]; var cameFrom = e2[0]; var nxt = findNextEdge(arrivedIdx,cameFrom); if(nxt){ pu.edgeIdx = nxt.idx; pu.t = 0; pu.reversed = nxt.dir === -1; } else { pu.t = 1; } } var ea = pu.reversed ? nodes[edges[pu.edgeIdx][1]] : nodes[edges[pu.edgeIdx][0]]; var eb = pu.reversed ? nodes[edges[pu.edgeIdx][0]] : nodes[edges[pu.edgeIdx][1]]; var px=ea.x+(eb.x-ea.x)*pu.t; var py=ea.y+(eb.y-ea.y)*pu.t; var grad2=ctx.createRadialGradient(px,py,0,px,py,10); grad2.addColorStop(0,'rgba(255,245,232,0.95)'); grad2.addColorStop(0.3,'rgba(255,122,41,0.82)'); grad2.addColorStop(1,'rgba(255,122,41,0)'); ctx.beginPath(); ctx.fillStyle=grad2; ctx.arc(px,py,9,0,Math.PI*2); ctx.fill(); ctx.beginPath(); ctx.fillStyle='#7A3D12'; ctx.arc(px,py,2,0,Math.PI*2); ctx.fill(); }}
+      requestAnimationFrame(draw);
+    }
+    canvas.parentElement.addEventListener('mousemove', function(e){ var rect=canvas.getBoundingClientRect(); mouse.x=e.clientX-rect.left; mouse.y=e.clientY-rect.top; });
+    canvas.parentElement.addEventListener('mouseleave', function(){ mouse.x=-9999; mouse.y=-9999; });
+    var resizeTimer;
+    window.addEventListener('resize', function(){ clearTimeout(resizeTimer); resizeTimer=setTimeout(resize,200); });
+    resize(); requestAnimationFrame(draw);
+  })();
+})();
+</script>
+</body>
+</html>
