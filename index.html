@@ -4,10 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#ffffff">
-<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="icon" type="image/png" href="logo-icon-transparent.png">
+<meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="format-detection" content="telephone=no">
-<title>IP Inženjering 032 — Elektroinženjering i automatizacija | Čačak</title>
+<title>IP Inženjering 032 </title>
 <meta name="description" content="IP Inženjering 032 — projektovanje i izrada elektroormara, automatizacija industrijskih pogona, PLC sistemi i ugradnja motora za kapije. Čačak, cela Srbija.">
 <meta name="keywords" content="elektroinženjering, elektroormari, automatizacija, PLC sistemi, kapije, motori, Čačak, Srbija">
 <meta property="og:type" content="website">
@@ -424,22 +425,33 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
 .gate-actions { display:flex; align-items:center; gap:14px; margin-top:18px; }
 .burger {
   display: none;
-  width: 44px;
-  height: 44px;
-  border: none;
-  border-radius: 0;
+  width: 48px;
+  height: 48px;
+  border: 1px solid rgba(255,255,255,0.22);
+  border-radius: 999px;
   align-items: center;
   justify-content: center;
   color: #ffffff;
-  background: transparent;
+  background: rgba(255,255,255,0.14);
   padding: 0;
-  box-shadow: none;
-  transition: opacity .25s var(--ease);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.16);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: transform .25s var(--ease), background .25s var(--ease), border-color .25s var(--ease);
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
 }
-.burger:hover { opacity: .85; }
-.burger svg { width: 24px; height: 24px; stroke-width: 2.2; }
+.burger:hover {
+  transform: translateY(-1px);
+  background: rgba(255,255,255,0.22);
+}
+.burger svg { width: 22px; height: 22px; stroke-width: 2; }
+.site-header.scrolled .burger {
+  color: #0f172a;
+  background: rgba(255,255,255,0.95);
+  border-color: rgba(15,23,42,0.12);
+  box-shadow: 0 10px 24px rgba(15,23,42,0.08);
+}
 
 /* Hero */
 .hero {
@@ -548,6 +560,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
   display: inline-block;
   color: #ffffff;
   background: none;
+  background-clip: initial;
   -webkit-background-clip: initial;
   -webkit-text-fill-color: currentColor;
   filter: none;
@@ -558,6 +571,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
 .hero-title span:last-child {
   color: #ff7a29;
   background: none;
+  background-clip: initial;
   -webkit-background-clip: initial;
   -webkit-text-fill-color: currentColor;
   filter: drop-shadow(0 0 18px rgba(255,122,41,0.35));
@@ -649,6 +663,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
 }
 .stat-num .count {
   background: linear-gradient(135deg, var(--text) 0%, var(--accent) 100%);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -1160,21 +1175,82 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
 @media(max-width: 760px) {
   .service-grid, .projects-grid, .why-list, .footer-grid, .testi-grid { grid-template-columns: 1fr; }
   .why-item-wide { grid-column: auto; }
-    .main-nav {
-    position: fixed; top: 0; right: 0; height: 100vh; width: min(320px, 80vw);
-    background: rgba(255, 255, 255, 0.99); -webkit-backdrop-filter: none; backdrop-filter: none;
-    border-left: 1px solid var(--border); flex-direction: column; align-items: flex-start;
-    justify-content: center; gap: 24px; padding: 40px var(--pad); transform: translateX(100%);
-    transition: transform .4s var(--ease); z-index: 520; isolation: isolate;
-    box-shadow: 0 20px 50px rgba(15,23,42,0.12);
+  .menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9998;
+    background-color: transparent;
+    backdrop-filter: none;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity .3s var(--ease), visibility .3s var(--ease);
+  }
+  .menu-overlay.open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+  .main-nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 280px;
+    max-width: 80vw;
+    background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+    border-left: 1px solid rgba(15,23,42,0.08);
+    border-radius: 20px 0 0 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 10px;
+    padding: 72px 18px 24px;
+    transform: translateX(110%);
+    transition: transform .35s var(--ease);
+    z-index: 9999;
+    isolation: isolate;
+    box-shadow: -14px 18px 48px rgba(15,23,42,0.16);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
   }
   .main-nav.open { transform: translateX(0); }
+  .main-nav .nav-indicator { display: none; }
+  .main-nav .mobile-nav-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    background: rgba(15,23,42,0.05);
+    color: #0f172a;
+    border: 1px solid rgba(15,23,42,0.06);
+  }
+  .main-nav .mobile-nav-close:hover {
+    background: rgba(47,143,224,0.1);
+    color: var(--accent);
+  }
   .main-nav a, .main-nav .nav-link {
+    width: 100%;
     color: #0f172a;
     text-shadow: none;
+    padding: 14px 16px;
+    border-radius: 14px;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: .01em;
   }
   .main-nav a.active, .main-nav a:hover, .main-nav .nav-link:hover {
     color: #2f8fe0;
+    background: rgba(47,143,224,0.09);
     text-shadow: none;
   }
   .header-cta .btn-outline { display: none; }
@@ -1190,7 +1266,10 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
   .form-row { grid-template-columns: 1fr; }
 }
 body.nav-open { overflow: hidden; }
-html.nav-open, body.nav-open { overflow: hidden; height: 100%; }
+html.nav-open,
+body.nav-open {
+  overflow: hidden;
+}
 /* Lock page scroll when nav is open and allow the nav to scroll internally */
 .main-nav { -webkit-overflow-scrolling: touch; overflow-y: auto; overscroll-behavior: contain; }
 .main-nav::-webkit-scrollbar{ width: 8px; }
@@ -1290,7 +1369,11 @@ html.nav-open, body.nav-open { overflow: hidden; height: 100%; }
       </span>
       <span class="logo-text">IP INŽENJERING <span class="logo-032">032</span></span>
     </a>
-    <nav class="main-nav" id="mainNav">
+    <div class="menu-overlay" id="menuOverlay" aria-hidden="true"></div>
+    <nav class="main-nav" id="mainNav" aria-label="Glavna navigacija" aria-hidden="true">
+      <button class="mobile-nav-close" id="mobileNavClose" type="button" aria-label="Zatvori meni">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18"/><path d="M6 6l12 12"/></svg>
+      </button>
       <a href="#o-nama">O nama</a>
       <a href="#usluge">Usluge</a>
       <a href="#realizacije">Projekti</a>
@@ -1430,7 +1513,7 @@ html.nav-open, body.nav-open { overflow: hidden; height: 100%; }
     </div>
     <div class="projects-grid">
       <article class="project-card" data-category="Elektroormari" data-title="Elektroormar sa PLC kontrolom" data-desc="Kompletno opremljen elektroormar za upravljanje industrijskom linijom.">
-        <img src="IP KAPIJE/elektroormari-plc-ormar.jpeg" alt="Elektroormar sa PLC kontrolom">
+        <img src="IP KAPIJE/slika1.jpeg" alt="Elektroormar sa PLC kontrolom" loading="lazy">
         <div class="project-content">
           <span class="project-tag">Elektroormari</span>
           <h3>Elektroormar sa PLC kontrolom</h3>
@@ -1438,7 +1521,7 @@ html.nav-open, body.nav-open { overflow: hidden; height: 100%; }
         </div>
       </article>
       <article class="project-card" data-category="Elektroormari" data-title="Razvodni ormar za pogon" data-desc="Razvodni ormar sa preglednim rasporedom i sigurnosnim elementima.">
-        <img src="IP KAPIJE/elektroormari-razvodni-ormar.jpeg" alt="Razvodni ormar za pogon">
+        <img src="IP KAPIJE/slika2.jpg" alt="Razvodni ormar za pogon" loading="lazy">
         <div class="project-content">
           <span class="project-tag">Elektroormari</span>
           <h3>Razvodni ormar za pogon</h3>
@@ -1446,7 +1529,7 @@ html.nav-open, body.nav-open { overflow: hidden; height: 100%; }
         </div>
       </article>
       <article class="project-card" data-category="Automatizacija" data-title="Automatizacija proizvodne linije" data-desc="Sistem senzora i PLC logike za stabilno upravljanje linijom.">
-        <img src="IP KAPIJE/automatizacija-linija.jpeg" alt="Automatizacija proizvodne linije">
+        <img src="IP KAPIJE/slika3.jpg" alt="Automatizacija proizvodne linije" loading="lazy">
         <div class="project-content">
           <span class="project-tag">Automatizacija</span>
           <h3>Automatizacija proizvodne linije</h3>
@@ -1454,7 +1537,7 @@ html.nav-open, body.nav-open { overflow: hidden; height: 100%; }
         </div>
       </article>
       <article class="project-card" data-category="Automatizacija" data-title="Daljinski nadzor sistema" data-desc="Daljinski nadzor i upravljanje sa pouzdanim signalnim statusima.">
-        <img src="IP KAPIJE/automatizacija-nadzor.jpeg" alt="Daljinski nadzor sistema">
+        <img src="IP KAPIJE/slika4.jpg" alt="Daljinski nadzor sistema" loading="lazy">
         <div class="project-content">
           <span class="project-tag">Automatizacija</span>
           <h3>Daljinski nadzor sistema</h3>
@@ -1462,7 +1545,7 @@ html.nav-open, body.nav-open { overflow: hidden; height: 100%; }
         </div>
       </article>
       <article class="project-card" data-category="Kapije i motori" data-title="Klizna kapija sa motorom" data-desc="Klizna kapija sa automatikom i sigurnosnim senzorima za domaćinstvo.">
-        <img src="IP KAPIJE/kapije-klizna-kapija.jpeg" alt="Klizna kapija sa motorom">
+        <img src="IP KAPIJE/slika5.jpg" alt="Klizna kapija sa motorom" loading="lazy">
         <div class="project-content">
           <span class="project-tag">Kapije i motori</span>
           <h3>Klizna kapija sa motorom</h3>
@@ -1470,7 +1553,7 @@ html.nav-open, body.nav-open { overflow: hidden; height: 100%; }
         </div>
       </article>
       <article class="project-card" data-category="Kapije i motori" data-title="Krilna kapija za industrijski ulaz" data-desc="Krilna kapija sa motorom i kontrolom za brz rad i dug vek.">
-        <img src="IP KAPIJE/kapije-krilna-kapija.jpeg" alt="Krilna kapija za industrijski ulaz">
+        <img src="IP KAPIJE/slika6.jpg" alt="Krilna kapija za industrijski ulaz" loading="lazy">
         <div class="project-content">
           <span class="project-tag">Kapije i motori</span>
           <h3>Krilna kapija za industrijski ulaz</h3>
@@ -1617,7 +1700,6 @@ html.nav-open, body.nav-open { overflow: hidden; height: 100%; }
           <circle id="gateLed" cx="590" cy="278" r="8" fill="#FF7A29"/>
           <path d="M520 240h88" stroke="rgba(15,23,42,0.2)" stroke-width="3" stroke-linecap="round"/>
         </svg>
-      </div>
       </div>
       <div class="gate-actions" data-reveal>
         <button class="btn btn-primary" id="gateToggle" type="button">Otvori kapiju</button>
@@ -1931,6 +2013,8 @@ html.nav-open, body.nav-open { overflow: hidden; height: 100%; }
   
   var burger = document.getElementById('burgerBtn');
   var nav = document.getElementById('mainNav');
+  var overlay = document.getElementById('menuOverlay');
+  var closeButton = document.getElementById('mobileNavClose');
   var navLinks = nav.querySelectorAll('a');
   var indicator = nav.querySelector('.nav-indicator');
   
@@ -1940,6 +2024,10 @@ html.nav-open, body.nav-open { overflow: hidden; height: 100%; }
     if(!nav) return;
     nav.classList.toggle('open', open);
     nav.setAttribute('aria-hidden', open ? 'false' : 'true');
+    if(overlay){
+      overlay.classList.toggle('open', open);
+      overlay.setAttribute('aria-hidden', open ? 'false' : 'true');
+    }
     document.documentElement.classList.toggle('nav-open', open);
     document.body.classList.toggle('nav-open', open);
     if(burger){ burger.setAttribute('aria-expanded', open ? 'true' : 'false'); }
@@ -1967,11 +2055,21 @@ html.nav-open, body.nav-open { overflow: hidden; height: 100%; }
       setNavOpen(!nav.classList.contains('open')); 
     }); 
   }
+  if(closeButton){
+    closeButton.addEventListener('click', function(event){
+      event.stopPropagation();
+      setNavOpen(false);
+    });
+  }
+  if(overlay){
+    overlay.addEventListener('click', function(){ setNavOpen(false); });
+  }
   document.addEventListener('click', function(event){
     if(!nav.classList.contains('open')) return;
     var clickedInsideNav = nav.contains(event.target);
     var clickedBurger = burger && burger.contains(event.target);
-    if(!clickedInsideNav && !clickedBurger){ setNavOpen(false); }
+    var clickedOverlay = overlay && overlay.contains(event.target);
+    if(!clickedInsideNav && !clickedBurger && !clickedOverlay){ setNavOpen(false); }
   });
   function setBurgerIcon(open){
     if(!burger) return;
@@ -2020,7 +2118,7 @@ html.nav-open, body.nav-open { overflow: hidden; height: 100%; }
   var modalTitle = document.getElementById('projectModalTitle');
   var modalDesc = document.getElementById('projectModalDesc');
   var modalClose = projectModal.querySelector('.modal-close');
-  document.querySelectorAll('.project-card .project-open, .project-card img').forEach(function(button){ button.addEventListener('click', function(){ var card = button.closest('.project-card'); modalImage.src = card.querySelector('img').src; modalImage.alt = card.querySelector('img').alt; modalTitle.textContent = card.getAttribute('data-title'); modalDesc.textContent = card.getAttribute('data-desc'); projectModal.classList.add('open'); projectModal.setAttribute('aria-hidden','false'); }); });
+  document.querySelectorAll('.project-card .project-open, .project-card img').forEach(function(button){ button.addEventListener('click', function(){ var card = button.closest('.project-card'); var img = card.querySelector('img'); modalImage.src = img.src; modalImage.alt = img.alt; modalTitle.textContent = card.getAttribute('data-title'); modalDesc.textContent = card.getAttribute('data-desc'); projectModal.classList.add('open'); projectModal.setAttribute('aria-hidden','false'); }); });
   function closeModal(){ projectModal.classList.remove('open'); projectModal.setAttribute('aria-hidden','true'); }
   modalClose.addEventListener('click', closeModal);
   projectModal.addEventListener('click', function(event){ if(event.target === projectModal){ closeModal(); }});
